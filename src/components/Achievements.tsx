@@ -8,7 +8,7 @@ const items = [
   "Committee Head — Aaruush, SRM University",
   "NPTEL Certified — Programming in Java",
   "Cisco Certified — Networking Basics",
-  "2× AI / ML Summer Internships",
+  "3× Industry Internships",
   "Event Volunteer — Ed Sheeran India Tour 2025",
   "Committee Member — SRM MUN Society",
 ];

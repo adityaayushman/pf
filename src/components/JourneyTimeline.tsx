@@ -40,6 +40,11 @@ const timelineItems = [
     description: "Built a YOLOv8 multi-zone crowd-intelligence platform and a reinforcement-learning cloud optimizer with Explainable AI.",
   },
   {
+    year: "2026",
+    title: "Intern @ Osswal Infosystem (SAP Partner)",
+    description: "Gaining hands-on industry experience in a professional software-development environment in Indore — learning enterprise technologies, collaborating with experienced professionals, and contributing to real-world projects.",
+  },
+  {
     year: "Future",
     title: "AI & Computer Vision Engineer",
     description: "Building intelligent, scalable systems that turn ambitious ideas into real-world impact.",
