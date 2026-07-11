@@ -49,7 +49,7 @@ export default function Overlay({
         className="absolute w-full text-center flex flex-col items-center gap-4 will-change-[opacity,transform]"
       >
         <span className="text-[#ff6b35] font-semibold tracking-widest uppercase text-sm md:text-base">
-          AI • Full Stack • Research
+          AI • Computer Vision • Cloud
         </span>
         <h2
           className="font-bold leading-tight tracking-tight"
@@ -58,7 +58,7 @@ export default function Overlay({
           Aditya Ayushman Sahoo.
         </h2>
         <span className="text-[#9ca3af] text-lg md:text-xl font-medium tracking-wide">
-          20+ Projects • AI/ML Engineer • Research Enthusiast
+          B.Tech Artificial Intelligence @ SRM • Deep Learning & Real-Time Systems
         </span>
       </motion.div>
 
@@ -71,8 +71,8 @@ export default function Overlay({
           className="font-bold leading-tight tracking-tight"
           style={{ fontSize: "clamp(2.5rem, 7vw, 7rem)" }}
         >
-          AI Engineer &<br />
-          Creative Developer.
+          AI & Machine<br />
+          Learning Engineer.
         </h2>
       </motion.div>
 
@@ -85,12 +85,12 @@ export default function Overlay({
           className="font-bold leading-tight tracking-tight"
           style={{ fontSize: "clamp(2rem, 5.5vw, 5.5rem)" }}
         >
-          Building AI, Software &<br />
-          Automation Systems<br />
-          That Solve Real Problems.
+          Building Real-Time AI,<br />
+          Computer Vision & Cloud<br />
+          Intelligence Systems.
         </h2>
         <span className="text-[#9ca3af] text-base md:text-xl tracking-wider font-medium">
-          AI/ML • Full Stack • Computer Vision • Blockchain
+          Deep Learning • YOLOv8 • Reinforcement Learning • FastAPI
         </span>
       </motion.div>
     </div>

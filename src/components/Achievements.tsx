@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
 const items = [
-  "Multiple Production Projects",
-  "AI Research Experience",
-  "Hackathon Participation",
-  "Full Stack Development",
-  "Blockchain Development",
-  "Computer Vision Applications",
+  "Committee Head — Aaruush, SRM University",
+  "NPTEL Certified — Programming in Java",
+  "Cisco Certified — Networking Basics",
+  "2× AI / ML Summer Internships",
+  "Event Volunteer — Ed Sheeran India Tour 2025",
+  "Committee Member — SRM MUN Society",
 ];
 
 export default function Achievements() {
@@ -28,7 +28,7 @@ export default function Achievements() {
           transition={{ duration: 0.8 }}
           className="mb-12 relative z-10"
         >
-          <h2 className="text-3xl md:text-5xl font-black mb-4">Milestones & Expertise</h2>
+          <h2 className="text-3xl md:text-5xl font-black mb-4">Achievements & Credentials</h2>
           <div className="h-1 w-20 bg-[#ff6b35] rounded-full"></div>
         </motion.div>
 

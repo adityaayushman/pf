@@ -5,28 +5,28 @@ import { motion } from "framer-motion";
 
 const stack = [
   {
-    category: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "Tailwind"],
+    category: "AI / ML",
+    items: ["Python", "TensorFlow", "PyTorch", "Keras", "Scikit-learn"],
   },
   {
-    category: "Backend",
-    items: ["Node.js", "Express", "Spring Boot"],
+    category: "Computer Vision",
+    items: ["YOLOv8", "OpenCV", "NumPy", "Matplotlib"],
   },
   {
-    category: "Database",
+    category: "ML & Data",
+    items: ["XGBoost", "Random Forest", "Reinforcement Learning", "Explainable AI"],
+  },
+  {
+    category: "Web & Backend",
+    items: ["React", "Next.js", "TypeScript", "FastAPI", "REST APIs"],
+  },
+  {
+    category: "Databases",
     items: ["PostgreSQL", "MySQL", "Supabase"],
   },
   {
-    category: "AI/ML",
-    items: ["Python", "TensorFlow", "PyTorch", "OpenCV"],
-  },
-  {
-    category: "Cloud",
-    items: ["Vercel", "Firebase", "AWS Basics"],
-  },
-  {
-    category: "Blockchain",
-    items: ["Solidity", "Ether.js", "IPFS"],
+    category: "Cloud & Blockchain",
+    items: ["Vercel", "Cloud Computing", "Solidity", "IPFS"],
   },
 ];
 

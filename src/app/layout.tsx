@@ -7,8 +7,41 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Aditya Ayushman Sahoo | AI Engineer & Full Stack Developer",
-  description: "Portfolio of Aditya Ayushman Sahoo — AI Engineer, Full Stack Developer, Research Enthusiast.",
+  metadataBase: new URL("https://pf-eight-xi.vercel.app"),
+  title: "Aditya Ayushman Sahoo | AI & Machine Learning Engineer",
+  description:
+    "AI & Machine Learning undergraduate specializing in Computer Vision, Deep Learning and Cloud AI. I build real-time analytics platforms, cloud optimization systems and intelligent computer-vision applications with YOLOv8, PyTorch, TensorFlow and FastAPI.",
+  keywords: [
+    "Aditya Ayushman Sahoo",
+    "AI Engineer",
+    "Machine Learning",
+    "Computer Vision",
+    "Deep Learning",
+    "YOLOv8",
+    "PyTorch",
+    "TensorFlow",
+    "FastAPI",
+    "Cloud AI",
+    "SRM Institute of Science and Technology",
+    "Portfolio",
+  ],
+  authors: [{ name: "Aditya Ayushman Sahoo" }],
+  creator: "Aditya Ayushman Sahoo",
+  openGraph: {
+    type: "website",
+    title: "Aditya Ayushman Sahoo | AI & Machine Learning Engineer",
+    description:
+      "Computer Vision, Deep Learning & Cloud AI. Real-time analytics, cloud optimization and intelligent CV systems built with YOLOv8, PyTorch, TensorFlow and FastAPI.",
+    url: "https://pf-eight-xi.vercel.app",
+    siteName: "Aditya Ayushman Sahoo",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aditya Ayushman Sahoo | AI & Machine Learning Engineer",
+    description:
+      "Computer Vision, Deep Learning & Cloud AI engineer. Real-time analytics and intelligent CV systems.",
+  },
 };
 
 export default function RootLayout({

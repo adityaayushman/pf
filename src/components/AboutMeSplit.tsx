@@ -46,16 +46,16 @@ export default function AboutMeSplit() {
             <span className="text-gray-400 font-medium">Projects Built</span>
           </div>
           <div className="flex flex-col gap-2">
-            <Counter value={5} suffix="+" />
-            <span className="text-gray-400 font-medium">Major Domains</span>
+            <Counter value={2} suffix="" />
+            <span className="text-gray-400 font-medium">AI Internships</span>
           </div>
           <div className="flex flex-col gap-2">
             <Counter value={3} suffix="+" />
             <span className="text-gray-400 font-medium">Research Works</span>
           </div>
           <div className="flex flex-col gap-2">
-            <Counter value={1000} suffix="+" />
-            <span className="text-gray-400 font-medium">Hours of Development</span>
+            <Counter value={4} suffix="" />
+            <span className="text-gray-400 font-medium">Languages Spoken</span>
           </div>
         </div>
 
@@ -71,7 +71,7 @@ export default function AboutMeSplit() {
             From Curious Developer to AI Innovator
           </h3>
           <p>
-            I am Aditya Ayushman Sahoo, a Computer Science Engineering student specializing in Artificial Intelligence and Machine Learning.
+            I am Aditya Ayushman Sahoo, an Artificial Intelligence & Machine Learning undergraduate at SRM Institute of Science and Technology, Chennai, focused on Computer Vision, Deep Learning and Cloud AI.
           </p>
           <p>
             My journey began with curiosity about how technology works and evolved into building complete software systems that solve real-world challenges.
@@ -81,6 +81,12 @@ export default function AboutMeSplit() {
           </p>
           <p>
             From building AI-powered accident detection systems using YOLO and LSTM to creating decentralized healthcare solutions using blockchain and IPFS, I enjoy turning ambitious ideas into impactful products.
+          </p>
+          <p>
+            More recently, I built <span className="text-white font-medium">CrowdCount</span>, a multi-zone real-time crowd-intelligence platform powered by YOLOv8 and FastAPI, and a <span className="text-white font-medium">Cloud Resource Optimizer</span> that uses reinforcement learning (Deep Q-Networks) with Explainable AI for smarter workload scheduling.
+          </p>
+          <p>
+            I have interned as an AI developer at <span className="text-white font-medium">Syllogistek Systems</span> (Generative AI, Keras, PyTorch) and at the <span className="text-white font-medium">Silicon Institute of Technology</span>, and I am certified in Programming in Java (NPTEL) and Networking (Cisco).
           </p>
           <p>
             I focus on building scalable systems, intelligent workflows, and user-centric experiences that combine innovation with practicality.
