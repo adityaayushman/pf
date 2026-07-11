@@ -58,7 +58,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm font-medium">
           <p>© 2026 Aditya Ayushman Sahoo.</p>
-          <p>Built with AI, engineered with purpose.</p>
+          <p>Designed &amp; developed with purpose.</p>
         </div>
       </div>
     </footer>
