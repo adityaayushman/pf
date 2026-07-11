@@ -4,10 +4,43 @@ import React from "react";
 import { motion } from "framer-motion";
 import { GitBranch } from "lucide-react";
 
-// Central GitHub link for all project cards. Swap for per-project repo URLs later if desired.
+// Central GitHub link for project cards that don't have a dedicated repo yet.
 const GITHUB_URL = "https://github.com/adityaayushman";
 
-const projects = [
+type Project = {
+  title: string;
+  description: string;
+  tech: string[];
+  repo?: string;
+};
+
+const projects: Project[] = [
+  {
+    title: "CrowdCount — Real-Time Crowd Intelligence",
+    description:
+      "Real-time crowd-analytics platform using YOLOv8 for multi-zone people detection, with a dual pipeline for live dashboards and offline batch video analytics — centroid tracking, heatmaps, line-crossing and ROI metrics over a FastAPI backend.",
+    tech: ["Python", "YOLOv8", "FastAPI", "OpenCV"],
+    repo: "https://github.com/adityaayushman/CROWD-COUNT",
+  },
+  {
+    title: "PCBMind AI — PCB Defect Inspection",
+    description:
+      "AI-powered PCB defect-inspection SaaS: upload → AI inspect → annotated result → PDF report → dashboard. A full-stack platform with a Next.js frontend, FastAPI backend and Supabase database.",
+    tech: ["Next.js", "FastAPI", "Computer Vision", "Supabase"],
+    repo: "https://github.com/adityaayushman/pcb-mind",
+  },
+  {
+    title: "Cloud Computing Resource Optimizer",
+    description:
+      "Intelligent cloud resource optimizer using ML and reinforcement learning — XGBoost & Random Forest workload forecasting, Deep Q-Network scheduling, and Explainable AI for transparent, interpretable decisions.",
+    tech: ["Python", "XGBoost", "Reinforcement Learning", "DQN"],
+  },
+  {
+    title: "Clear Pixel — Image Enhancement Engine",
+    description:
+      "A grayscale image enhancement and filtering system built from scratch — Gaussian blur, Sobel edge detection, Laplacian and sharpening via manual convolution, with an interactive real-time visualization interface.",
+    tech: ["Python", "OpenCV", "NumPy", "Matplotlib"],
+  },
   {
     title: "AI-Powered Accident Detection System",
     description: "Real-time accident detection using YOLO and LSTM models, deployed on edge devices to alert emergency services instantly.",
@@ -82,7 +115,7 @@ export default function FeaturedProjects() {
 
             <div className="flex items-center gap-4 mt-auto">
               <a
-                href={GITHUB_URL}
+                href={project.repo ?? GITHUB_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#ff6b35] transition-colors"

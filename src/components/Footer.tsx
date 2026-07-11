@@ -10,8 +10,9 @@ export default function Footer() {
           <div className="flex flex-col gap-6">
             <h2 className="text-2xl font-black text-white tracking-tight">Aditya Ayushman Sahoo.</h2>
             <p className="text-gray-400 font-medium leading-relaxed max-w-sm">
-              Building AI, Software & Automation Systems That Solve Real Problems.
+              AI &amp; Machine Learning Engineer specializing in Computer Vision, Deep Learning and Cloud AI.
             </p>
+            <p className="text-gray-500 font-medium text-sm">Chennai, India</p>
           </div>
 
           {/* Center Column */}

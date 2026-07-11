@@ -6,8 +6,13 @@ import { motion } from "framer-motion";
 const timelineItems = [
   {
     year: "2023",
-    title: "Started B.Tech in AI & ML",
-    description: "Built foundations in programming and software engineering.",
+    title: "Started B.Tech in Artificial Intelligence",
+    description: "Began my degree at SRM Institute of Science and Technology, Chennai — building strong foundations in programming, mathematics and AI.",
+  },
+  {
+    year: "2024",
+    title: "Summer Intern @ Silicon Institute of Technology",
+    description: "Hands-on with software development, Python, Machine Learning and Deep Learning. Earned NPTEL certification in Programming in Java.",
   },
   {
     year: "2024",
@@ -17,22 +22,27 @@ const timelineItems = [
   {
     year: "2025",
     title: "AI & Computer Vision Projects",
-    description: "Built accident detection systems using YOLO and LSTM.",
+    description: "Built accident-detection systems using YOLO and LSTM, and explored real-time video intelligence.",
   },
   {
     year: "2025",
     title: "Blockchain Healthcare Research",
-    description: "Created decentralized healthcare record systems.",
+    description: "Created decentralized medical-record systems using blockchain and IPFS.",
+  },
+  {
+    year: "2025",
+    title: "Summer Intern @ Syllogistek Systems",
+    description: "Developed AI solutions with Generative AI, Keras and PyTorch. Certified in Networking Basics by Cisco.",
   },
   {
     year: "2026",
-    title: "Hackathons & Research",
-    description: "Expanded into AI research and innovation challenges.",
+    title: "CrowdCount & Cloud Resource Optimizer",
+    description: "Built a YOLOv8 multi-zone crowd-intelligence platform and a reinforcement-learning cloud optimizer with Explainable AI.",
   },
   {
     year: "Future",
-    title: "AI Products & Startups",
-    description: "Building scalable AI-powered solutions.",
+    title: "AI & Computer Vision Engineer",
+    description: "Building intelligent, scalable systems that turn ambitious ideas into real-world impact.",
   },
 ];
 
