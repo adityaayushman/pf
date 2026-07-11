@@ -48,6 +48,9 @@ export default function Footer() {
                 <a href="https://github.com/adityaayushman" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">GitHub</a>
               </li>
               <li>
+                <a href="https://leetcode.com/u/AdityaAyushmanSahoo/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">LeetCode</a>
+              </li>
+              <li>
                 <a href="https://pf-eight-xi.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">Portfolio</a>
               </li>
             </ul>
