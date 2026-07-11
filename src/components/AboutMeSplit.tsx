@@ -54,8 +54,8 @@ export default function AboutMeSplit() {
             <span className="text-gray-400 font-medium">Research Works</span>
           </div>
           <div className="flex flex-col gap-2">
-            <Counter value={4} suffix="" />
-            <span className="text-gray-400 font-medium">Languages Spoken</span>
+            <Counter value={330} suffix="+" />
+            <span className="text-gray-400 font-medium">DSA Problems Solved</span>
           </div>
         </div>
 
