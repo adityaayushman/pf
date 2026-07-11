@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 
 function Counter({
@@ -36,13 +36,32 @@ function Counter({
 }
 
 export default function AboutMeSplit() {
+  // Live GitHub repo count + LeetCode solved count (with static fallbacks).
+  const [repos, setRepos] = useState<number | null>(null);
+  const [solved, setSolved] = useState<number | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    fetch("/api/stats")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (!active || !d) return;
+        if (typeof d?.github?.repos === "number") setRepos(d.github.repos);
+        if (typeof d?.leetcode?.solved === "number") setSolved(d.leetcode.solved);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+
   return (
     <section id="about" className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-16 items-center">
         {/* LEFT SIDE */}
         <div className="grid grid-cols-2 gap-10">
           <div className="flex flex-col gap-2">
-            <Counter value={20} suffix="+" />
+            <Counter value={repos ?? 20} suffix={repos != null ? "" : "+"} />
             <span className="text-gray-400 font-medium">Projects Built</span>
           </div>
           <div className="flex flex-col gap-2">
@@ -54,7 +73,7 @@ export default function AboutMeSplit() {
             <span className="text-gray-400 font-medium">Research Works</span>
           </div>
           <div className="flex flex-col gap-2">
-            <Counter value={330} suffix="+" />
+            <Counter value={solved ?? 330} suffix={solved != null ? "" : "+"} />
             <span className="text-gray-400 font-medium">DSA Problems Solved</span>
           </div>
         </div>
