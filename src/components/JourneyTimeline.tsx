@@ -85,7 +85,7 @@ export default function JourneyTimeline() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
-                    className="bg-[#111111] border border-white/5 p-6 rounded-2xl hover:border-white/20 transition-colors"
+                    className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:bg-white/8 hover:border-white/25 transition-all duration-500 ease-out"
                   >
                     <span className="text-[#ff6b35] font-bold text-lg mb-2 block">{item.year}</span>
                     <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
