@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(git commit -m 'feat: live GitHub + LeetCode stats via cached /api/stats route *)"
-    ]
-  }
-}
