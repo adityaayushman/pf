@@ -16,7 +16,7 @@ export default function ScrollyCanvas({
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [images, setImages] = useState<HTMLImageElement[]>([]);
-  const [loadedCount, setLoadedCount] = useState(0);
+  const [firstReady, setFirstReady] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -25,30 +25,46 @@ export default function ScrollyCanvas({
 
   useEffect(() => {
     const loadedImages: HTMLImageElement[] = [];
-    let loaded = 0;
 
     for (let i = 0; i < FRAME_COUNT; i++) {
       const img = new Image();
       img.src = getFramePath(i);
-      img.onload = () => {
-        loaded++;
-        setLoadedCount(loaded);
-      };
+      // Reveal the hero as soon as the very first frame is decoded, then let
+      // the remaining frames keep streaming in the background.
+      if (i === 0) {
+        img.onload = () => setFirstReady(true);
+      }
       loadedImages.push(img);
     }
     setImages(loadedImages);
   }, []);
 
+  const isLoaded = (img?: HTMLImageElement) =>
+    !!img && img.complete && img.naturalWidth > 0;
+
   const drawImage = (index: number) => {
-    if (!canvasRef.current || !images[index]) return;
+    if (!canvasRef.current) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const img = images[index];
+    // Prefer the exact frame; if it hasn't decoded yet, use the nearest
+    // loaded frame so scrubbing never flashes an empty canvas.
+    let img: HTMLImageElement | undefined = images[index];
+    if (!isLoaded(img)) {
+      let best: HTMLImageElement | undefined;
+      for (let d = 1; d < FRAME_COUNT && !best; d++) {
+        if (index - d >= 0 && isLoaded(images[index - d])) best = images[index - d];
+        else if (index + d < FRAME_COUNT && isLoaded(images[index + d]))
+          best = images[index + d];
+      }
+      img = best;
+    }
+    if (!isLoaded(img)) return;
+    const frame = img as HTMLImageElement;
 
     const canvasRatio = canvas.width / canvas.height;
-    const imgRatio = img.width / img.height;
+    const imgRatio = frame.width / frame.height;
 
     let drawWidth = canvas.width;
     let drawHeight = canvas.height;
@@ -64,30 +80,33 @@ export default function ScrollyCanvas({
     }
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+    ctx.drawImage(frame, offsetX, offsetY, drawWidth, drawHeight);
   };
+
+  const currentFrame = () =>
+    Math.min(FRAME_COUNT - 1, Math.floor(scrollYProgress.get() * FRAME_COUNT));
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (canvas) {
+    if (!canvas) return;
+
+    const sizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-    }
-    
-    if (loadedCount > 0) {
-      requestAnimationFrame(() => drawImage(0));
-    }
+    };
+
+    sizeCanvas();
+    requestAnimationFrame(() => drawImage(currentFrame()));
 
     const handleResize = () => {
-      if (canvas) {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        drawImage(Math.min(FRAME_COUNT - 1, Math.floor(scrollYProgress.get() * FRAME_COUNT)));
-      }
+      sizeCanvas();
+      drawImage(currentFrame());
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [images, loadedCount]);
+    // Redraw once the first frame is ready and as more frames stream in.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [images, firstReady]);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if (images.length === 0) return;
@@ -96,21 +115,16 @@ export default function ScrollyCanvas({
     requestAnimationFrame(() => drawImage(frameIndex));
   });
 
-  const loadingPercentage = Math.round((loadedCount / FRAME_COUNT) * 100);
-
   return (
     <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#0d0d0d]">
-      {loadedCount < FRAME_COUNT && (
+      {!firstReady && (
         <div className="absolute inset-0 flex items-center justify-center bg-[#0d0d0d] z-10">
-          <span className="text-[#9ca3af] text-xl font-bold tracking-widest">
-            LOADING {loadingPercentage}%
+          <span className="text-[#9ca3af] text-xl font-bold tracking-widest animate-pulse">
+            LOADING
           </span>
         </div>
       )}
-      <canvas
-        ref={canvasRef}
-        className="block w-full h-full object-cover"
-      />
+      <canvas ref={canvasRef} className="block w-full h-full object-cover" />
     </div>
   );
 }
