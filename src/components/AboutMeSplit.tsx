@@ -37,7 +37,7 @@ function Counter({
 
 export default function AboutMeSplit() {
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
+    <section id="about" className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-16 items-center">
         {/* LEFT SIDE */}
         <div className="grid grid-cols-2 gap-10">

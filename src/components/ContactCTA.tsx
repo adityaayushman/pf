@@ -6,7 +6,7 @@ import { ArrowRight, Mail, Download } from "lucide-react";
 
 export default function ContactCTA() {
   return (
-    <section className="py-32 md:py-48 px-6 text-center relative overflow-hidden">
+    <section id="contact" className="py-32 md:py-48 px-6 text-center relative overflow-hidden">
       {/* Cinematic Background Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#ff6b35]/10 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -26,20 +26,20 @@ export default function ContactCTA() {
         </h2>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-          <button className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-gray-200 hover:scale-105 active:scale-95 transition-all">
+          <a href="mailto:adityaasahoo@gmail.com" className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-gray-200 hover:scale-105 active:scale-95 transition-all">
             <span>Contact Me</span>
             <Mail size={20} />
-          </button>
+          </a>
           
-          <button className="w-full sm:w-auto px-8 py-4 bg-transparent text-white border border-white/20 rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-white/5 hover:border-white/40 hover:scale-105 active:scale-95 transition-all">
+          <a href="#projects" className="w-full sm:w-auto px-8 py-4 bg-transparent text-white border border-white/20 rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-white/5 hover:border-white/40 hover:scale-105 active:scale-95 transition-all">
             <span>View Projects</span>
             <ArrowRight size={20} />
-          </button>
+          </a>
 
-          <button className="w-full sm:w-auto px-8 py-4 bg-[#ff6b35] text-white rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-[#ff8555] hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,107,53,0.3)] hover:shadow-[0_0_30px_rgba(255,107,53,0.5)]">
+          <a href="/resume.pdf" download className="w-full sm:w-auto px-8 py-4 bg-[#ff6b35] text-white rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-[#ff8555] hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,107,53,0.3)] hover:shadow-[0_0_30px_rgba(255,107,53,0.5)]">
             <span>Download Resume</span>
             <Download size={20} />
-          </button>
+          </a>
         </div>
       </motion.div>
     </section>

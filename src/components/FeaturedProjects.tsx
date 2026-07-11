@@ -2,7 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, GitBranch } from "lucide-react";
+import { GitBranch } from "lucide-react";
+
+// Central GitHub link for all project cards. Swap for per-project repo URLs later if desired.
+const GITHUB_URL = "https://github.com/adityaayushman";
 
 const projects = [
   {
@@ -39,7 +42,7 @@ const projects = [
 
 export default function FeaturedProjects() {
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
+    <section id="projects" className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -78,14 +81,15 @@ export default function FeaturedProjects() {
             </div>
 
             <div className="flex items-center gap-4 mt-auto">
-              <button className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#ff6b35] transition-colors">
+              <a
+                href={GITHUB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#ff6b35] transition-colors"
+              >
                 <GitBranch size={18} />
                 <span>GitHub</span>
-              </button>
-              <button className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#ff6b35] transition-colors">
-                <ExternalLink size={18} />
-                <span>Live Demo</span>
-              </button>
+              </a>
             </div>
           </motion.div>
         ))}
