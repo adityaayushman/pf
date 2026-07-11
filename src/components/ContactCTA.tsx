@@ -31,7 +31,7 @@ export default function ContactCTA() {
             <Mail size={20} />
           </a>
           
-          <a href="#projects" className="w-full sm:w-auto px-8 py-4 bg-transparent text-white border border-white/20 rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-white/5 hover:border-white/40 hover:scale-105 active:scale-95 transition-all">
+          <a href="#projects" className="w-full sm:w-auto px-8 py-4 bg-white/5 backdrop-blur-md text-white border border-white/15 rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-white/10 hover:border-white/30 hover:scale-105 active:scale-95 transition-all duration-300">
             <span>View Projects</span>
             <ArrowRight size={20} />
           </a>

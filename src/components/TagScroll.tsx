@@ -38,7 +38,7 @@ export default function TagScroll() {
           {[...row1, ...row1, ...row1, ...row1].map((tag, idx) => (
             <span
               key={`row1-${idx}`}
-              className="whitespace-nowrap border border-white/20 rounded-full px-6 py-2 text-sm md:text-base text-gray-300 bg-white/5"
+              className="whitespace-nowrap border border-white/15 rounded-full px-6 py-2 text-sm md:text-base text-gray-300 bg-white/6 backdrop-blur-md"
             >
               {tag}
             </span>
@@ -51,7 +51,7 @@ export default function TagScroll() {
           {[...row2, ...row2, ...row2, ...row2].map((tag, idx) => (
             <span
               key={`row2-${idx}`}
-              className="whitespace-nowrap border border-white/20 rounded-full px-6 py-2 text-sm md:text-base text-gray-300 bg-white/5"
+              className="whitespace-nowrap border border-white/15 rounded-full px-6 py-2 text-sm md:text-base text-gray-300 bg-white/6 backdrop-blur-md"
             >
               {tag}
             </span>

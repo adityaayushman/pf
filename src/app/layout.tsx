@@ -52,6 +52,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jakarta.className} antialiased`}>
       <body className="min-h-screen flex flex-col bg-[#0d0d0d] text-white overflow-x-hidden">
+        {/* Ambient glow layer — gives the frosted-glass panels something to refract */}
+        <div
+          aria-hidden
+          className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+        >
+          <div className="absolute -top-32 left-[8%] h-[45vw] w-[45vw] rounded-full bg-[#ff6b35]/10 blur-[140px]" />
+          <div className="absolute bottom-[4%] right-[6%] h-[42vw] w-[42vw] rounded-full bg-[#4f7cff]/10 blur-[150px]" />
+        </div>
         {children}
       </body>
     </html>

@@ -94,8 +94,8 @@ export default function FeaturedProjects() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: idx * 0.1 }}
-            className="flex flex-col bg-[#111111] border border-white/10 rounded-2xl p-8 hover:-translate-y-[6px] hover:border-white/30 transition-all duration-300"
+            transition={{ duration: 0.6, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+            className="group flex flex-col bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:-translate-y-1.5 hover:bg-white/8 hover:border-white/25 hover:shadow-[0_24px_50px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out"
           >
             <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
             <p className="text-gray-400 mb-6 flex-grow leading-relaxed">

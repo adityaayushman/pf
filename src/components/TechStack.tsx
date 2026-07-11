@@ -51,8 +51,8 @@ export default function TechStack() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: idx * 0.1 }}
-            className="group relative p-8 rounded-2xl bg-[#111111] border border-white/5 hover:border-white/20 transition-all duration-300"
+            transition={{ duration: 0.6, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+            className="group relative p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:-translate-y-1 hover:bg-white/8 hover:border-white/25 hover:shadow-[0_20px_45px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out"
           >
             {/* Hover glow effect */}
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#ff6b35]/0 to-[#ff6b35]/0 group-hover:from-[#ff6b35]/10 transition-colors duration-500 pointer-events-none"></div>

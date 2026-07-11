@@ -58,10 +58,10 @@ export default function ServicesGrid() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: idx * 0.1 }}
-            className="bg-[#1a1a1a] border border-white/10 rounded-2xl p-8 hover:-translate-y-1 hover:border-white/30 transition-all duration-300 flex flex-col gap-4"
+            transition={{ duration: 0.6, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+            className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:-translate-y-1.5 hover:bg-white/8 hover:border-white/25 hover:shadow-[0_20px_45px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out flex flex-col gap-4"
           >
-            <div className="mb-2 p-3 bg-white/5 rounded-xl w-fit">
+            <div className="mb-2 p-3 bg-white/10 backdrop-blur-sm rounded-xl w-fit group-hover:bg-[#ff6b35]/15 transition-colors duration-500">
               {service.icon}
             </div>
             <h3 className="text-xl font-bold text-white">{service.title}</h3>

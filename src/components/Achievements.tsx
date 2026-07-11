@@ -16,7 +16,7 @@ const items = [
 export default function Achievements() {
   return (
     <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
-      <div className="bg-gradient-to-br from-[#1a1a1a] to-[#111111] rounded-3xl p-8 md:p-16 border border-white/5 relative overflow-hidden">
+      <div className="bg-white/3 backdrop-blur-2xl rounded-3xl p-8 md:p-16 border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.4)] relative overflow-hidden">
         {/* Background Accent */}
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-[#ff6b35]/10 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 bg-[#ff6b35]/5 rounded-full blur-3xl pointer-events-none"></div>
@@ -40,7 +40,7 @@ export default function Achievements() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/20 hover:bg-white/10 transition-colors"
+              className="flex items-center gap-4 bg-white/5 backdrop-blur-md p-4 rounded-xl border border-white/10 hover:border-white/25 hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-500 ease-out"
             >
               <CheckCircle2 className="text-[#ff6b35] shrink-0" size={24} />
               <span className="text-white font-medium text-lg tracking-wide">{item}</span>
