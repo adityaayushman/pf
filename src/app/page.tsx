@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Nav from "@/components/Nav";
 import ScrollyCanvas from "@/components/ScrollyCanvas";
 import Overlay from "@/components/Overlay";
 import TagScroll from "@/components/TagScroll";
@@ -19,7 +20,9 @@ export default function Home() {
 
   return (
     <main>
+      <Nav />
       <div
+        id="top"
         ref={heroRef}
         style={{
           position: "relative",
