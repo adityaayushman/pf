@@ -65,8 +65,8 @@ export default function AboutMeSplit() {
             <span className="text-gray-400 font-medium">Projects Built</span>
           </div>
           <div className="flex flex-col gap-2">
-            <Counter value={2} suffix="" />
-            <span className="text-gray-400 font-medium">AI Internships</span>
+            <Counter value={3} suffix="" />
+            <span className="text-gray-400 font-medium">Internships</span>
           </div>
           <div className="flex flex-col gap-2">
             <Counter value={3} suffix="+" />
@@ -105,7 +105,7 @@ export default function AboutMeSplit() {
             More recently, I built <span className="text-white font-medium">CrowdCount</span>, a multi-zone real-time crowd-intelligence platform powered by YOLOv8 and FastAPI, and a <span className="text-white font-medium">Cloud Resource Optimizer</span> that uses reinforcement learning (Deep Q-Networks) with Explainable AI for smarter workload scheduling.
           </p>
           <p>
-            I have interned as an AI developer at <span className="text-white font-medium">Syllogistek Systems</span> (Generative AI, Keras, PyTorch) and at the <span className="text-white font-medium">Silicon Institute of Technology</span>, and I am certified in Programming in Java (NPTEL) and Networking (Cisco).
+            I am currently interning at <span className="text-white font-medium">Osswal Infosystem</span> (a SAP Partner) in Indore, following earlier AI internships at <span className="text-white font-medium">Syllogistek Systems</span> (Generative AI, Keras, PyTorch) and the <span className="text-white font-medium">Silicon Institute of Technology</span>. I am certified in Programming in Java (NPTEL) and Networking (Cisco).
           </p>
           <p>
             I focus on building scalable systems, intelligent workflows, and user-centric experiences that combine innovation with practicality.

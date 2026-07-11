@@ -18,7 +18,7 @@ const projects: Project[] = [
   {
     title: "CrowdCount — Real-Time Crowd Intelligence",
     description:
-      "Real-time crowd-analytics platform using YOLOv8 for multi-zone people detection, with a dual pipeline for live dashboards and offline batch video analytics — centroid tracking, heatmaps, line-crossing and ROI metrics over a FastAPI backend.",
+      "Real-time crowd-analytics platform running YOLOv8 across multiple camera feeds. A dual pipeline powers a live dashboard and offline batch processing — centroid tracking, zone and line-crossing metrics, and spatial heatmaps over a FastAPI backend, exportable as CSV, JSON and PDF reports.",
     tech: ["Python", "YOLOv8", "FastAPI", "OpenCV"],
     repo: "https://github.com/adityaayushman/CROWD-COUNT",
   },
@@ -32,13 +32,13 @@ const projects: Project[] = [
   {
     title: "Cloud Computing Resource Optimizer",
     description:
-      "Intelligent cloud resource optimizer using ML and reinforcement learning — XGBoost & Random Forest workload forecasting, Deep Q-Network scheduling, and Explainable AI for transparent, interpretable decisions.",
+      "Multi-cloud resource optimizer that forecasts CPU and memory demand with XGBoost and Random Forest, then schedules allocation through a Deep Q-Network. Explainable AI keeps every decision transparent and interpretable.",
     tech: ["Python", "XGBoost", "Reinforcement Learning", "DQN"],
   },
   {
     title: "Clear Pixel — Image Enhancement Engine",
     description:
-      "A grayscale image enhancement and filtering system built from scratch — Gaussian blur, Sobel edge detection, Laplacian and sharpening via manual convolution, with an interactive real-time visualization interface.",
+      "Grayscale image-processing system that improves clarity and reduces noise — Gaussian blur, Sobel edge detection, Laplacian and sharpening built from scratch with manual convolution, plus real-time visualization.",
     tech: ["Python", "OpenCV", "NumPy", "Matplotlib"],
   },
   {
