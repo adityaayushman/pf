@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -20,16 +19,16 @@ export default function Footer() {
             <h3 className="text-lg font-bold text-white tracking-wide uppercase">Quick Links</h3>
             <ul className="flex flex-col gap-4">
               <li>
-                <Link href="#" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">About</Link>
+                <a href="#about" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">About</a>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">Projects</Link>
+                <a href="#projects" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">Projects</a>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">Research</Link>
+                <a href="#research" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">Research</a>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">Contact</Link>
+                <a href="#contact" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">Contact</a>
               </li>
             </ul>
           </div>
@@ -39,16 +38,16 @@ export default function Footer() {
             <h3 className="text-lg font-bold text-white tracking-wide uppercase">Connect</h3>
             <ul className="flex flex-col gap-4">
               <li>
-                <a href="#" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">Email</a>
+                <a href="mailto:adityaasahoo@gmail.com" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">Email</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/aditya-ayushman-sahoo-243b81287/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">LinkedIn</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">GitHub</a>
+                <a href="https://github.com/adityaayushman" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">GitHub</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">Portfolio</a>
+                <a href="https://pf-eight-xi.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">Portfolio</a>
               </li>
             </ul>
           </div>

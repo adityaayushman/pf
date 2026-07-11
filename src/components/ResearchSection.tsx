@@ -21,7 +21,7 @@ const researches = [
 
 export default function ResearchSection() {
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5">
+    <section id="research" className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5">
       <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-start">
         <motion.div
           initial={{ opacity: 0, x: -30 }}

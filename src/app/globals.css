@@ -4,6 +4,10 @@ html {
   scroll-behavior: smooth;
 }
 
+section[id] {
+  scroll-margin-top: 2rem;
+}
+
 body {
   background: #0d0d0d;
   color: white;
