@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { BrainCircuit, Code2, Bot, Link, Lightbulb, Palette } from "lucide-react";
+import { BrainCircuit, Code2, Bot, Link, Lightbulb, Cloud } from "lucide-react";
 
 const services = [
   {
@@ -31,9 +31,9 @@ const services = [
     icon: <Lightbulb size={32} className="text-[#ff6b35]" />,
   },
   {
-    title: "UI/UX Design",
-    description: "Figma, wireframes and polished interfaces.",
-    icon: <Palette size={32} className="text-[#ff6b35]" />,
+    title: "Cloud & Optimization",
+    description: "ML-driven cloud resource optimization, scheduling and scalable, efficient systems.",
+    icon: <Cloud size={32} className="text-[#ff6b35]" />,
   },
 ];
 
@@ -47,7 +47,7 @@ export default function ServicesGrid() {
         transition={{ duration: 0.8 }}
         className="mb-16 text-center"
       >
-        <h2 className="text-4xl md:text-5xl font-black mb-4">Core Services</h2>
+        <h2 className="text-4xl md:text-5xl font-black mb-4">What I Do</h2>
         <div className="h-1 w-20 bg-[#ff6b35] rounded-full mx-auto"></div>
       </motion.div>
 

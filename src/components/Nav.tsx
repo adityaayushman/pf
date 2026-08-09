@@ -40,8 +40,28 @@ function LeetcodeIcon() {
   );
 }
 
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <svg viewBox="0 0 24 24" width={24} height={24} fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" aria-hidden="true">
+      {open ? (
+        <>
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </>
+      ) : (
+        <>
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </>
+      )}
+    </svg>
+  );
+}
+
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -50,22 +70,26 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const solid = scrolled || menuOpen;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#0d0d0d]/60 backdrop-blur-xl border-b border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
+        solid
+          ? "bg-[#0d0d0d]/70 backdrop-blur-xl border-b border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
           : "bg-transparent border-b border-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-12 h-16">
         <a
           href="#top"
+          onClick={() => setMenuOpen(false)}
           className="text-lg font-black tracking-tight text-white hover:text-[#ff6b35] transition-colors"
         >
           Aditya<span className="text-[#ff6b35]">.</span>
         </a>
 
+        {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
           {LINKS.map((l) => (
             <a
@@ -78,44 +102,73 @@ export default function Nav() {
           ))}
         </div>
 
-        <div className="flex items-center gap-4">
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="text-gray-300 hover:text-[#ff6b35] transition-colors"
-          >
+        {/* Desktop socials + resume */}
+        <div className="hidden md:flex items-center gap-4">
+          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-gray-300 hover:text-[#ff6b35] transition-colors">
             <GithubIcon />
           </a>
-          <a
-            href={LINKEDIN_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="text-gray-300 hover:text-[#ff6b35] transition-colors"
-          >
+          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-gray-300 hover:text-[#ff6b35] transition-colors">
             <LinkedinIcon />
           </a>
-          <a
-            href={LEETCODE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LeetCode"
-            className="text-gray-300 hover:text-[#ff6b35] transition-colors"
-          >
+          <a href={LEETCODE_URL} target="_blank" rel="noopener noreferrer" aria-label="LeetCode" className="text-gray-300 hover:text-[#ff6b35] transition-colors">
             <LeetcodeIcon />
           </a>
-          <a
-            href="/resume.pdf"
-            download
-            className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-[#ff6b35] text-white text-sm font-bold hover:bg-[#ff8555] transition-colors"
-          >
+          <a href="/resume.pdf" download className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#ff6b35] text-white text-sm font-bold hover:bg-[#ff8555] transition-colors">
             <FileText size={16} />
             <span>Resume</span>
           </a>
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          type="button"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          className="md:hidden text-white hover:text-[#ff6b35] transition-colors"
+        >
+          <MenuIcon open={menuOpen} />
+        </button>
       </nav>
+
+      {/* Mobile menu panel */}
+      {menuOpen && (
+        <div className="md:hidden bg-[#0d0d0d]/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 flex flex-col gap-5">
+          <div className="flex flex-col gap-4">
+            {LINKS.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setMenuOpen(false)}
+                className="text-base font-medium text-gray-200 hover:text-[#ff6b35] transition-colors"
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-6 pt-4 border-t border-white/10">
+            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-gray-300 hover:text-[#ff6b35] transition-colors">
+              <GithubIcon />
+            </a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-gray-300 hover:text-[#ff6b35] transition-colors">
+              <LinkedinIcon />
+            </a>
+            <a href={LEETCODE_URL} target="_blank" rel="noopener noreferrer" aria-label="LeetCode" className="text-gray-300 hover:text-[#ff6b35] transition-colors">
+              <LeetcodeIcon />
+            </a>
+            <a
+              href="/resume.pdf"
+              download
+              onClick={() => setMenuOpen(false)}
+              className="ml-auto flex items-center gap-2 px-4 py-2 rounded-full bg-[#ff6b35] text-white text-sm font-bold hover:bg-[#ff8555] transition-colors"
+            >
+              <FileText size={16} />
+              <span>Resume</span>
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
