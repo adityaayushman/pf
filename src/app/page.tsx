@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Nav from "@/components/Nav";
+import ScrollProgress from "@/components/ScrollProgress";
 import ScrollyCanvas from "@/components/ScrollyCanvas";
 import Overlay from "@/components/Overlay";
 import TagScroll from "@/components/TagScroll";
@@ -21,6 +22,7 @@ export default function Home() {
 
   return (
     <main>
+      <ScrollProgress />
       <Nav />
       <div
         id="top"
@@ -38,8 +40,8 @@ export default function Home() {
       <AboutMeSplit />
       <Experience />
       <TechStack />
-      <FeaturedProjects />
       <ServicesGrid />
+      <FeaturedProjects />
       <JourneyTimeline />
       <ResearchSection />
       <Achievements />

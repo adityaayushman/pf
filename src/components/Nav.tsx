@@ -62,12 +62,31 @@ function MenuIcon({ open }: { open: boolean }) {
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Scroll-spy: highlight the nav link for whichever section is centered.
+  useEffect(() => {
+    const ids = LINKS.map((l) => l.href.slice(1));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, []);
 
   const solid = scrolled || menuOpen;
@@ -95,7 +114,11 @@ export default function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-gray-300 hover:text-[#ff6b35] transition-colors"
+              className={`text-sm font-medium transition-colors ${
+                active === l.href.slice(1)
+                  ? "text-[#ff6b35]"
+                  : "text-gray-300 hover:text-[#ff6b35]"
+              }`}
             >
               {l.label}
             </a>
@@ -140,7 +163,11 @@ export default function Nav() {
                 key={l.href}
                 href={l.href}
                 onClick={() => setMenuOpen(false)}
-                className="text-base font-medium text-gray-200 hover:text-[#ff6b35] transition-colors"
+                className={`text-base font-medium transition-colors ${
+                  active === l.href.slice(1)
+                    ? "text-[#ff6b35]"
+                    : "text-gray-200 hover:text-[#ff6b35]"
+                }`}
               >
                 {l.label}
               </a>

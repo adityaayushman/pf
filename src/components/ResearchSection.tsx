@@ -45,7 +45,7 @@ export default function ResearchSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.15 }}
-              className="group flex items-center justify-between p-6 md:p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:border-white/25 hover:bg-white/8 hover:-translate-y-0.5 transition-all duration-500 ease-out cursor-pointer"
+              className="group flex items-center justify-between p-6 md:p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:border-white/25 hover:bg-white/8 hover:-translate-y-0.5 transition-all duration-500 ease-out"
             >
               <div className="flex flex-col gap-2">
                 <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#ff6b35] transition-colors">
