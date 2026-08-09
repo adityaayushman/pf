@@ -2,22 +2,29 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { BookOpen } from "lucide-react";
+import { BookOpen, ExternalLink } from "lucide-react";
 
-const researches = [
+type Research = { title: string; tech: string; link?: string };
+
+const researches: Research[] = [
   {
     title: "Cloud Computing Resource Optimizer",
     tech: "Published · SSRN",
+    link: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6957438",
   },
   {
     title: "MedVision — AI Medical Imaging",
     tech: "Computer Vision · KIIT Research",
+    link: "https://github.com/adityaayushman/medvision",
   },
   {
     title: "AI-Powered Road Accident Detection",
     tech: "YOLO + LSTM",
   },
 ];
+
+const cardClass =
+  "group flex items-center justify-between p-6 md:p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:border-white/25 hover:bg-white/8 hover:-translate-y-0.5 transition-all duration-500 ease-out";
 
 export default function ResearchSection() {
   return (
@@ -38,28 +45,47 @@ export default function ResearchSection() {
         </motion.div>
 
         <div className="w-full md:w-2/3 flex flex-col gap-6">
-          {researches.map((item, idx) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: idx * 0.15 }}
-              className="group flex items-center justify-between p-6 md:p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:border-white/25 hover:bg-white/8 hover:-translate-y-0.5 transition-all duration-500 ease-out"
-            >
-              <div className="flex flex-col gap-2">
-                <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#ff6b35] transition-colors">
-                  {item.title}
-                </h3>
-                <span className="text-gray-500 font-medium tracking-wide">
-                  {item.tech}
-                </span>
-              </div>
-              <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm text-gray-400 group-hover:bg-[#ff6b35]/15 group-hover:text-[#ff6b35] transition-all duration-500">
-                <BookOpen size={20} />
-              </div>
-            </motion.div>
-          ))}
+          {researches.map((item, idx) => {
+            const anim = {
+              initial: { opacity: 0, y: 20 },
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true, margin: "-50px" },
+              transition: { duration: 0.5, delay: idx * 0.15 },
+            } as const;
+
+            const inner = (
+              <>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#ff6b35] transition-colors">
+                    {item.title}
+                  </h3>
+                  <span className="text-gray-500 font-medium tracking-wide">
+                    {item.tech}
+                  </span>
+                </div>
+                <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm text-gray-400 group-hover:bg-[#ff6b35]/15 group-hover:text-[#ff6b35] transition-all duration-500">
+                  {item.link ? <ExternalLink size={20} /> : <BookOpen size={20} />}
+                </div>
+              </>
+            );
+
+            return item.link ? (
+              <motion.a
+                key={item.title}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${cardClass} cursor-pointer`}
+                {...anim}
+              >
+                {inner}
+              </motion.a>
+            ) : (
+              <motion.div key={item.title} className={cardClass} {...anim}>
+                {inner}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

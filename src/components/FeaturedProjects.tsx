@@ -50,7 +50,7 @@ const projects: Project[] = [
     description:
       "AI-powered medical-imaging platform for intelligent clinical decision support — computer vision and deep learning with Explainable AI, delivered through a FastAPI backend and a React dashboard.",
     tech: ["Python", "PyTorch", "OpenCV", "FastAPI", "React.js"],
-    repo: "https://github.com/adityaayushman/MED-VISION",
+    repo: "https://github.com/adityaayushman/medvision",
     theme: "scan",
   },
   {
