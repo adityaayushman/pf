@@ -6,6 +6,7 @@ import ScrollyCanvas from "@/components/ScrollyCanvas";
 import Overlay from "@/components/Overlay";
 import TagScroll from "@/components/TagScroll";
 import AboutMeSplit from "@/components/AboutMeSplit";
+import Experience from "@/components/Experience";
 import TechStack from "@/components/TechStack";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import ServicesGrid from "@/components/ServicesGrid";
@@ -35,6 +36,7 @@ export default function Home() {
 
       <TagScroll />
       <AboutMeSplit />
+      <Experience />
       <TechStack />
       <FeaturedProjects />
       <ServicesGrid />

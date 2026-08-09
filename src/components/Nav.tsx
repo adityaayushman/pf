@@ -5,6 +5,7 @@ import { FileText } from "lucide-react";
 
 const LINKS = [
   { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Research", href: "#research" },
   { label: "Contact", href: "#contact" },
