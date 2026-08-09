@@ -65,7 +65,7 @@ export default function AboutMeSplit() {
             <span className="text-gray-400 font-medium">Projects Built</span>
           </div>
           <div className="flex flex-col gap-2">
-            <Counter value={3} suffix="" />
+            <Counter value={5} suffix="" />
             <span className="text-gray-400 font-medium">Internships</span>
           </div>
           <div className="flex flex-col gap-2">
@@ -90,7 +90,7 @@ export default function AboutMeSplit() {
             From Curious Developer to AI Innovator
           </h3>
           <p>
-            I am Aditya Ayushman Sahoo, an Artificial Intelligence & Machine Learning undergraduate at SRM Institute of Science and Technology, Chennai, focused on Computer Vision, Deep Learning and Cloud AI.
+            I am Aditya Ayushman Sahoo, a Computer Science (AI & ML) undergraduate at SRM Institute of Science and Technology, Chennai — Class of 2027 — focused on Computer Vision, Deep Learning and Cloud AI.
           </p>
           <p>
             My journey began with curiosity about how technology works and evolved into building complete software systems that solve real-world challenges.
@@ -105,7 +105,7 @@ export default function AboutMeSplit() {
             More recently, I built <span className="text-white font-medium">CrowdCount</span>, a multi-zone real-time crowd-intelligence platform powered by YOLOv8 and FastAPI, and a <span className="text-white font-medium">Cloud Resource Optimizer</span> that uses reinforcement learning (Deep Q-Networks) with Explainable AI for smarter workload scheduling.
           </p>
           <p>
-            I am currently interning at <span className="text-white font-medium">Osswal Infosystem</span> (a SAP Partner) in Indore, following earlier AI internships at <span className="text-white font-medium">Syllogistek Systems</span> (Generative AI, Keras, PyTorch) and the <span className="text-white font-medium">Silicon Institute of Technology</span>. I am certified in Programming in Java (NPTEL) and Networking (Cisco).
+            I'm currently a research intern at <span className="text-white font-medium">KIIT</span> exploring AI-powered medical imaging (MedVision), alongside internships at <span className="text-white font-medium">Osswal Infosystem</span> (a SAP Partner) and <span className="text-white font-medium">Kukreja's Wastec</span> — following earlier AI roles at <span className="text-white font-medium">Syllogistek Systems</span> and the <span className="text-white font-medium">Silicon Institute of Technology</span>. My work on a Cloud Resource Optimizer is published on <span className="text-white font-medium">SSRN</span>.
           </p>
           <p>
             I focus on building scalable systems, intelligent workflows, and user-centric experiences that combine innovation with practicality.

@@ -15,7 +15,19 @@ type Experience = {
 
 const experiences: Experience[] = [
   {
-    role: "Intern",
+    role: "Research Intern",
+    company: "KIIT — Kalinga Institute of Industrial Technology",
+    tag: "Research Internship",
+    period: "Jun 2026 – Present",
+    location: "India",
+    points: [
+      "Researching AI-powered medical imaging (MedVision) for intelligent clinical decision support.",
+      "Focused on Computer Vision, Deep Learning and Explainable AI.",
+    ],
+    tech: ["Computer Vision", "Deep Learning", "Explainable AI"],
+  },
+  {
+    role: "AI Intern",
     company: "Osswal Infosystem Pvt. Ltd.",
     tag: "SAP Partner",
     period: "Jul 2026 – Present",
@@ -27,10 +39,22 @@ const experiences: Experience[] = [
     tech: ["Enterprise Software", "SAP Ecosystem"],
   },
   {
+    role: "Intern",
+    company: "Kukreja's Wastec Bio-Gas Pvt. Ltd.",
+    tag: "AI · Computer Vision",
+    period: "Jun 2026 – Present",
+    location: "Mumbai, India",
+    points: [
+      "Contributing to PCBMind AI — an AI-powered PCB defect-inspection platform using computer vision and deep learning.",
+      "End-to-end pipeline: image preprocessing, PCB registration, defect detection and automated quality reporting.",
+    ],
+    tech: ["Python", "PyTorch", "FastAPI", "React.js"],
+  },
+  {
     role: "Summer Intern",
     company: "Syllogistek Systems Pvt. Ltd.",
     tag: "AI / Software",
-    period: "Jun 2025 – Jul 2025",
+    period: "Jun 2025 – Jul 2026",
     location: "India",
     points: [
       "Developed software solutions addressing AI-related challenges.",

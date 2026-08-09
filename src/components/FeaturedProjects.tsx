@@ -17,7 +17,8 @@ type ProjectTheme =
   | "blockchain"
   | "parking"
   | "grid"
-  | "chart";
+  | "chart"
+  | "scan";
 
 type Project = {
   title: string;
@@ -39,10 +40,18 @@ const projects: Project[] = [
   {
     title: "PCBMind AI — PCB Defect Inspection",
     description:
-      "AI-powered PCB defect-inspection SaaS: upload → AI inspect → annotated result → PDF report → dashboard. A full-stack platform with a Next.js frontend, FastAPI backend and Supabase database.",
-    tech: ["Next.js", "FastAPI", "Computer Vision", "Supabase"],
+      "AI-powered PCB defect-inspection platform that automates defect detection and quality assessment — image preprocessing (CLAHE, ORB, homography), a FastAPI backend, a React.js analytics dashboard and exportable PDF/CSV reports.",
+    tech: ["PyTorch", "YOLOv8", "FastAPI", "React.js", "Supabase"],
     repo: "https://github.com/adityaayushman/pcb-mind",
     theme: "circuit",
+  },
+  {
+    title: "MedVision — AI Medical Imaging Intelligence",
+    description:
+      "AI-powered medical-imaging platform for intelligent clinical decision support — computer vision and deep learning with Explainable AI, delivered through a FastAPI backend and a React dashboard.",
+    tech: ["Python", "PyTorch", "OpenCV", "FastAPI", "React.js"],
+    repo: "https://github.com/adityaayushman/MED-VISION",
+    theme: "scan",
   },
   {
     title: "Cloud Computing Resource Optimizer",
@@ -265,6 +274,20 @@ function renderTheme(theme: ProjectTheme) {
             <rect key={i} x={30 + i * 38} y={100 - h} width="20" height={h} rx="3" fill={O} fillOpacity={0.25 + (i % 3) * 0.12} />
           ))}
           <path d="M40 70 L78 50 L116 62 L154 34 L192 56 L230 24 L268 46" stroke="white" strokeOpacity="0.4" strokeWidth="2" fill="none" />
+        </>
+      );
+    case "scan":
+      return (
+        <>
+          {[26, 46, 66].map((r, i) => (
+            <circle key={i} cx="160" cy="60" r={r} fill="none" stroke={O} strokeOpacity={0.45 - i * 0.12} strokeWidth="1.5" />
+          ))}
+          <line x1="160" y1="6" x2="160" y2="114" stroke="white" strokeOpacity="0.1" />
+          <line x1="54" y1="60" x2="266" y2="60" stroke="white" strokeOpacity="0.1" />
+          <circle cx="160" cy="60" r="4" fill={O} fillOpacity="0.75" />
+          {[[120, 40], [196, 76], [140, 82]].map(([x, y], i) => (
+            <circle key={`d${i}`} cx={x} cy={y} r="3" fill="white" fillOpacity="0.22" />
+          ))}
         </>
       );
     default:

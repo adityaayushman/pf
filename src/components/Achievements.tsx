@@ -5,12 +5,15 @@ import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
 const items = [
+  "Published — Cloud Optimizer (SSRN)",
+  "Research Intern — KIIT · MedVision",
+  "5× Industry Internships",
   "Committee Head — Aaruush, SRM University",
   "NPTEL Certified — Programming in Java",
   "Cisco Certified — Networking Basics",
-  "3× Industry Internships",
+  "MathWorks — Deep Learning Onramp",
+  "Cybersecurity Internship — AICTE NEAT",
   "Event Volunteer — Ed Sheeran India Tour 2025",
-  "Committee Member — SRM MUN Society",
 ];
 
 export default function Achievements() {

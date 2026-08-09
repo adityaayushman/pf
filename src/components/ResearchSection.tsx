@@ -6,16 +6,16 @@ import { BookOpen } from "lucide-react";
 
 const researches = [
   {
+    title: "Cloud Computing Resource Optimizer",
+    tech: "Published · SSRN",
+  },
+  {
+    title: "MedVision — AI Medical Imaging",
+    tech: "Computer Vision · KIIT Research",
+  },
+  {
     title: "AI-Powered Road Accident Detection",
     tech: "YOLO + LSTM",
-  },
-  {
-    title: "Decentralized Medical Records",
-    tech: "Blockchain + IPFS",
-  },
-  {
-    title: "Intelligent Healthcare Systems",
-    tech: "AI + Cloud Computing",
   },
 ];
 
