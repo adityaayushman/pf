@@ -39,29 +39,34 @@ export default function AutoScroll() {
     window.addEventListener("keydown", onUserIntent);
     window.addEventListener("pointerdown", onUserIntent);
 
-    // Gentle ease-in-out (sine) — smooth acceleration, low peak speed so it
-    // never rushes through the middle.
-    const ease = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;
-
     const startAutoScroll = () => {
       if (cancelled) return;
       const hero = document.getElementById("top");
-      const start = window.scrollY;
       // End of the hero scene = start of the content/intro below it.
       const target = hero ? hero.offsetHeight : window.innerHeight;
-      const distance = target - start;
-      if (distance <= 0) return;
+      if (window.scrollY >= target - 1) return;
 
-      // Slow, gentle pace (~0.28 px/ms → ~3s per screen), clamped.
-      const duration = Math.min(18000, Math.max(4000, distance / 0.28));
+      // Constant, gentle drift (~0.14 px/ms ≈ 140 px/s) with a soft ramp-in and
+      // ramp-out — no eased "fast middle", so it stays consistently slow.
+      const cruise = 0.14; // px per millisecond
       const t0 = performance.now();
+      let last = t0;
 
       const step = (now: number) => {
         if (cancelled) return;
-        const p = Math.min(1, (now - t0) / duration);
-        window.scrollTo(0, start + distance * ease(p));
-        if (p < 1) raf = requestAnimationFrame(step);
-        else removeListeners();
+        const dt = now - last;
+        last = now;
+        const y = window.scrollY;
+        const remaining = target - y;
+        if (remaining <= 1) {
+          window.scrollTo(0, target);
+          removeListeners();
+          return;
+        }
+        // Ramp up over the first ~800ms and ease down over the last ~600px.
+        const factor = Math.min(1, (now - t0) / 800, remaining / 600);
+        window.scrollTo(0, Math.min(target, y + cruise * factor * dt));
+        raf = requestAnimationFrame(step);
       };
       raf = requestAnimationFrame(step);
     };
