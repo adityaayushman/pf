@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Nav from "@/components/Nav";
 import ScrollProgress from "@/components/ScrollProgress";
 import AskMeAI from "@/components/AskMeAI";
+import AutoScroll from "@/components/AutoScroll";
 import ScrollyCanvas from "@/components/ScrollyCanvas";
 import Overlay from "@/components/Overlay";
 import TagScroll from "@/components/TagScroll";
@@ -23,6 +24,7 @@ export default function Home() {
 
   return (
     <main>
+      <AutoScroll />
       <ScrollProgress />
       <Nav />
       <div
