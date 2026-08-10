@@ -26,6 +26,7 @@ type Project = {
   tech: string[];
   repo?: string;
   theme: ProjectTheme;
+  featured?: boolean;
 };
 
 const projects: Project[] = [
@@ -44,6 +45,7 @@ const projects: Project[] = [
     tech: ["PyTorch", "YOLOv8", "FastAPI", "React.js", "Supabase"],
     repo: "https://github.com/adityaayushman/pcb-mind",
     theme: "circuit",
+    featured: true,
   },
   {
     title: "MedVision — AI Medical Imaging Intelligence",
@@ -52,6 +54,7 @@ const projects: Project[] = [
     tech: ["Python", "PyTorch", "OpenCV", "FastAPI", "React.js"],
     repo: "https://github.com/adityaayushman/medvision",
     theme: "scan",
+    featured: true,
   },
   {
     title: "Cloud Computing Resource Optimizer",
@@ -59,6 +62,7 @@ const projects: Project[] = [
       "Multi-cloud resource optimizer that forecasts CPU and memory demand with XGBoost and Random Forest, then schedules allocation through a Deep Q-Network. Explainable AI keeps every decision transparent and interpretable.",
     tech: ["Python", "XGBoost", "Reinforcement Learning", "DQN"],
     theme: "cloud",
+    featured: true,
   },
   {
     title: "Clear Pixel — Image Enhancement Engine",
@@ -311,6 +315,9 @@ function ProjectVisual({ theme }: { theme: ProjectTheme }) {
 }
 
 export default function FeaturedProjects() {
+  const featured = projects.filter((p) => p.featured);
+  const more = projects.filter((p) => !p.featured);
+
   return (
     <section id="projects" className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
       <motion.div
@@ -324,8 +331,9 @@ export default function FeaturedProjects() {
         <div className="h-1 w-20 bg-[#ff6b35] rounded-full"></div>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, idx) => (
+      {/* Flagship projects */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {featured.map((project, idx) => (
           <motion.div
             key={project.title}
             initial={{ opacity: 0, y: 30 }}
@@ -363,6 +371,54 @@ export default function FeaturedProjects() {
                 <span>GitHub</span>
               </a>
             </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Secondary projects */}
+      <motion.h3
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6 }}
+        className="text-2xl md:text-3xl font-bold text-white mt-24 mb-8"
+      >
+        More Projects
+      </motion.h3>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {more.map((project, idx) => (
+          <motion.div
+            key={project.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: (idx % 4) * 0.06, ease: [0.22, 1, 0.36, 1] }}
+            className="group flex flex-col bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-5 shadow-[0_6px_20px_rgba(0,0,0,0.3)] hover:-translate-y-1 hover:bg-white/8 hover:border-white/25 transition-all duration-500 ease-out"
+          >
+            <h3 className="text-base font-bold text-white mb-2 leading-snug">{project.title}</h3>
+            <p className="text-gray-400 text-sm mb-4 flex-grow leading-relaxed line-clamp-2">
+              {project.description}
+            </p>
+            <div className="flex flex-wrap gap-1.5 mb-4">
+              {project.tech.slice(0, 3).map((tech) => (
+                <span
+                  key={tech}
+                  className="px-2 py-0.5 bg-white/5 border border-white/10 rounded-full text-[11px] text-gray-400 font-medium"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+            <a
+              href={project.repo ?? GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs font-medium text-white hover:text-[#ff6b35] transition-colors mt-auto"
+            >
+              <GitBranch size={15} />
+              <span>GitHub</span>
+            </a>
           </motion.div>
         ))}
       </div>
