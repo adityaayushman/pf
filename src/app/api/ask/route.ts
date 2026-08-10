@@ -87,11 +87,10 @@ function sanitize(input: unknown): ChatMessage[] {
 }
 
 export async function POST(req: Request) {
+  // No key configured → 503 so the client falls back to its built-in
+  // keyless responder (the assistant still works, for free).
   if (!process.env.ANTHROPIC_API_KEY) {
-    return new Response(
-      "The AI assistant isn't switched on yet — Aditya needs to add an API key. In the meantime, feel free to explore the portfolio or email adityaasahoo@gmail.com.",
-      { status: 200, headers: { "Content-Type": "text/plain; charset=utf-8" } }
-    );
+    return new Response("llm-unconfigured", { status: 503 });
   }
 
   let messages: ChatMessage[] = [];

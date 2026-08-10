@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { localAnswer } from "@/lib/askResponder";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -49,6 +50,24 @@ export default function AskMeAI() {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, open]);
 
+  const setLast = (content: string) =>
+    setMessages((prev) => {
+      const copy = [...prev];
+      copy[copy.length - 1] = { role: "assistant", content };
+      return copy;
+    });
+
+  // Reveal a local answer word-by-word so it feels like it's being typed.
+  const typeLocal = async (full: string) => {
+    const parts = full.split(/(\s+)/);
+    let acc = "";
+    for (const p of parts) {
+      acc += p;
+      setLast(acc);
+      await new Promise((r) => setTimeout(r, 26));
+    }
+  };
+
   const send = async (text: string) => {
     const question = text.trim();
     if (!question || loading) return;
@@ -58,40 +77,40 @@ export default function AskMeAI() {
     setInput("");
     setLoading(true);
 
+    let streamed = false;
+    // Try the LLM route first. If no API key is configured it returns 503,
+    // and we fall back to the built-in keyless responder — so the assistant
+    // works either way.
     try {
       const res = await fetch("/api/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: history }),
       });
-
-      if (!res.ok || !res.body) {
-        throw new Error("bad response");
-      }
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        const chunk = decoder.decode(value, { stream: true });
-        setMessages((prev) => {
-          const copy = [...prev];
-          const last = copy[copy.length - 1];
-          copy[copy.length - 1] = { ...last, content: last.content + chunk };
-          return copy;
-        });
+      if (res.ok && res.body) {
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let acc = "";
+        for (;;) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          acc += decoder.decode(value, { stream: true });
+          if (acc) {
+            streamed = true;
+            setLast(acc);
+          }
+        }
       }
     } catch {
-      setMessages((prev) => {
-        const copy = [...prev];
-        copy[copy.length - 1] = {
-          role: "assistant",
-          content:
-            "Sorry — I couldn't reach the assistant. Please try again, or email adityaasahoo@gmail.com.",
-        };
-        return copy;
-      });
+      // ignore — fall through to the local responder
+    }
+
+    try {
+      if (!streamed) await typeLocal(localAnswer(question));
+    } catch {
+      setLast(
+        "I can tell you about Aditya's projects, skills, experience or how to reach him — email adityaasahoo@gmail.com."
+      );
     } finally {
       setLoading(false);
     }
