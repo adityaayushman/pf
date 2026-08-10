@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 
 const FRAME_COUNT = 150;
+const CONCURRENCY = 8;
 const getFramePath = (index: number) => {
   const paddedIndex = index.toString().padStart(3, "0");
   return `/sequence/frame_${paddedIndex}_delay-0.066s.webp`;
@@ -17,26 +18,48 @@ export default function ScrollyCanvas({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [images, setImages] = useState<HTMLImageElement[]>([]);
   const [firstReady, setFirstReady] = useState(false);
+  const [loadedCount, setLoadedCount] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end end"],
   });
 
+  // Load frames in order with limited concurrency, so we don't fire 150
+  // requests at once (which saturates the network and stalls first paint).
+  // Frame 0 is also <link rel=preload>ed in the document head, so it's
+  // usually already in cache by the time this runs.
   useEffect(() => {
-    const loadedImages: HTMLImageElement[] = [];
+    const imgs = Array.from({ length: FRAME_COUNT }, () => new Image());
+    setImages(imgs);
 
-    for (let i = 0; i < FRAME_COUNT; i++) {
-      const img = new Image();
-      img.src = getFramePath(i);
-      // Reveal the hero as soon as the very first frame is decoded, then let
-      // the remaining frames keep streaming in the background.
-      if (i === 0) {
-        img.onload = () => setFirstReady(true);
+    let next = 0;
+    let active = 0;
+    let cancelled = false;
+
+    const pump = () => {
+      while (active < CONCURRENCY && next < FRAME_COUNT) {
+        const i = next++;
+        active++;
+        const img = imgs[i];
+        img.decoding = "async";
+        const done = () => {
+          if (cancelled) return;
+          if (i === 0) setFirstReady(true);
+          setLoadedCount((c) => c + 1);
+          active--;
+          pump();
+        };
+        img.onload = done;
+        img.onerror = done;
+        img.src = getFramePath(i);
       }
-      loadedImages.push(img);
-    }
-    setImages(loadedImages);
+    };
+    pump();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const isLoaded = (img?: HTMLImageElement) =>
@@ -86,6 +109,7 @@ export default function ScrollyCanvas({
   const currentFrame = () =>
     Math.min(FRAME_COUNT - 1, Math.floor(scrollYProgress.get() * FRAME_COUNT));
 
+  // Size the canvas and draw the current frame (also on resize).
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -104,9 +128,16 @@ export default function ScrollyCanvas({
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-    // Redraw once the first frame is ready and as more frames stream in.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [images, firstReady]);
+
+  // As more frames stream in, refresh the current frame (no canvas resize,
+  // so there's no flicker) — upgrades a "nearest" frame to the exact one.
+  useEffect(() => {
+    if (!firstReady) return;
+    requestAnimationFrame(() => drawImage(currentFrame()));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loadedCount]);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if (images.length === 0) return;
@@ -118,9 +149,10 @@ export default function ScrollyCanvas({
   return (
     <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#0d0d0d]">
       {!firstReady && (
-        <div className="absolute inset-0 flex items-center justify-center bg-[#0d0d0d] z-10">
-          <span className="text-[#9ca3af] text-xl font-bold tracking-widest animate-pulse">
-            LOADING
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#0d0d0d] z-10">
+          <div className="h-8 w-8 rounded-full border-2 border-white/15 border-t-[#ff6b35] animate-spin" />
+          <span className="text-[#9ca3af] text-xs font-semibold tracking-[0.3em] uppercase">
+            Loading
           </span>
         </div>
       )}

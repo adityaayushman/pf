@@ -52,6 +52,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jakarta.className} antialiased`}>
       <body className="min-h-screen flex flex-col bg-[#0d0d0d] text-white overflow-x-hidden">
+        {/* Preload the first hero frame so it can paint immediately */}
+        <link
+          rel="preload"
+          as="image"
+          href="/sequence/frame_000_delay-0.066s.webp"
+          fetchPriority="high"
+        />
         {/* Ambient glow layer — gives the frosted-glass panels something to refract */}
         <div
           aria-hidden
