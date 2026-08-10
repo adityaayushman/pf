@@ -39,8 +39,9 @@ export default function AutoScroll() {
     window.addEventListener("keydown", onUserIntent);
     window.addEventListener("pointerdown", onUserIntent);
 
-    const easeInOutCubic = (t: number) =>
-      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    // Gentle ease-in-out (sine) — smooth acceleration, low peak speed so it
+    // never rushes through the middle.
+    const ease = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;
 
     const startAutoScroll = () => {
       if (cancelled) return;
@@ -51,14 +52,14 @@ export default function AutoScroll() {
       const distance = target - start;
       if (distance <= 0) return;
 
-      // Slow, smooth pace (~0.8 px/ms), clamped to a sensible window.
-      const duration = Math.min(8000, Math.max(2500, distance / 0.8));
+      // Slow, gentle pace (~0.28 px/ms → ~3s per screen), clamped.
+      const duration = Math.min(18000, Math.max(4000, distance / 0.28));
       const t0 = performance.now();
 
       const step = (now: number) => {
         if (cancelled) return;
         const p = Math.min(1, (now - t0) / duration);
-        window.scrollTo(0, start + distance * easeInOutCubic(p));
+        window.scrollTo(0, start + distance * ease(p));
         if (p < 1) raf = requestAnimationFrame(step);
         else removeListeners();
       };
