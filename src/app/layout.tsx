@@ -44,6 +44,25 @@ export const metadata: Metadata = {
   },
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Aditya Ayushman Sahoo",
+  jobTitle: "AI & Machine Learning Engineer",
+  url: "https://pf-eight-xi.vercel.app",
+  email: "mailto:adityaasahoo@gmail.com",
+  address: { "@type": "PostalAddress", addressLocality: "Chennai", addressCountry: "IN" },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "SRM Institute of Science and Technology",
+  },
+  sameAs: [
+    "https://github.com/adityaayushman",
+    "https://www.linkedin.com/in/aditya-ayushman-sahoo-243b81287/",
+    "https://leetcode.com/u/AdityaAyushmanSahoo/",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -67,6 +86,10 @@ export default function RootLayout({
           <div className="absolute -top-32 left-[8%] h-[45vw] w-[45vw] rounded-full bg-[#ff6b35]/10 blur-[140px]" />
           <div className="absolute bottom-[4%] right-[6%] h-[42vw] w-[42vw] rounded-full bg-[#4f7cff]/10 blur-[150px]" />
         </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         {children}
       </body>
     </html>

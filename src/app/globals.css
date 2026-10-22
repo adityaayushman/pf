@@ -29,6 +29,21 @@ body {
   100% { transform: translateX(0); }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-scroll-left,
+  .animate-scroll-right {
+    animation: none !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #ff6b35;
+  outline-offset: 3px;
+}
+
 @layer utilities {
   .animate-scroll-left {
     animation: scrollLeft 40s linear infinite;

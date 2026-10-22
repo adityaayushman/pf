@@ -23,6 +23,9 @@ export default function Footer() {
                 <a href="#about" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">About</a>
               </li>
               <li>
+                <a href="#experience" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">Experience</a>
+              </li>
+              <li>
                 <a href="#projects" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">Projects</a>
               </li>
               <li>
@@ -50,9 +53,6 @@ export default function Footer() {
               <li>
                 <a href="https://leetcode.com/u/AdityaAyushmanSahoo/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">LeetCode</a>
               </li>
-              <li>
-                <a href="https://pf-eight-xi.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#ff6b35] transition-colors font-medium">Portfolio</a>
-              </li>
             </ul>
           </div>
 
@@ -61,7 +61,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm font-medium">
           <p>© 2026 Aditya Ayushman Sahoo.</p>
-          <p>Designed &amp; developed with purpose.</p>
+          <p>Built with Next.js, Tailwind CSS and Framer Motion.</p>
         </div>
       </div>
     </footer>

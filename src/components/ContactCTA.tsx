@@ -21,7 +21,7 @@ export default function ContactCTA() {
           className="font-black leading-tight tracking-tight text-white"
           style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
         >
-          Let's Build Something<br />
+          Let&apos;s Build Something<br />
           Meaningful Together.
         </h2>
 
@@ -36,8 +36,8 @@ export default function ContactCTA() {
             <ArrowRight size={20} />
           </a>
 
-          <a href="/resume.pdf" download className="w-full sm:w-auto px-8 py-4 bg-[#ff6b35] text-white rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-[#ff8555] hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,107,53,0.3)] hover:shadow-[0_0_30px_rgba(255,107,53,0.5)]">
-            <span>Download Resume</span>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-8 py-4 bg-[#ff6b35] text-white rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-[#ff8555] hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,107,53,0.3)] hover:shadow-[0_0_30px_rgba(255,107,53,0.5)]">
+            <span>View Resume</span>
             <Download size={20} />
           </a>
         </div>
