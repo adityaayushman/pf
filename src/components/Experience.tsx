@@ -111,6 +111,11 @@ export default function Experience() {
                   <span className="text-[#ff6b35] font-semibold">{exp.role}</span>
                   <span className="text-gray-600">·</span>
                   <span className="text-gray-500 text-sm font-medium">{exp.tag}</span>
+                  {exp.period.endsWith("Present") && (
+                    <span className="ml-1 rounded-full border border-[#ff6b35]/40 bg-[#ff6b35]/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#ff6b35]">
+                      Current
+                    </span>
+                  )}
                 </div>
               </div>
               <div className="text-left md:text-right shrink-0">

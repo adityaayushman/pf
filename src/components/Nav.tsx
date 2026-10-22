@@ -136,7 +136,7 @@ export default function Nav() {
           <a href={LEETCODE_URL} target="_blank" rel="noopener noreferrer" aria-label="LeetCode" className="text-gray-300 hover:text-[#ff6b35] transition-colors">
             <LeetcodeIcon />
           </a>
-          <a href="/resume.pdf" download className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#ff6b35] text-white text-sm font-bold hover:bg-[#ff8555] transition-colors">
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#ff6b35] text-white text-sm font-bold hover:bg-[#ff8555] transition-colors">
             <FileText size={16} />
             <span>Resume</span>
           </a>
@@ -186,7 +186,8 @@ export default function Nav() {
             </a>
             <a
               href="/resume.pdf"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
               className="ml-auto flex items-center gap-2 px-4 py-2 rounded-full bg-[#ff6b35] text-white text-sm font-bold hover:bg-[#ff8555] transition-colors"
             >
