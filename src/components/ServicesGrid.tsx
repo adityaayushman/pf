@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { BrainCircuit, Code2, Bot, Link, Lightbulb, Cloud } from "lucide-react";
+import { BrainCircuit, Code2, Bot, Smartphone, Lightbulb, Cloud } from "lucide-react";
 
 const services = [
   {
@@ -21,9 +21,9 @@ const services = [
     icon: <Bot size={32} className="text-[#ff6b35]" />,
   },
   {
-    title: "Blockchain Solutions",
-    description: "Secure decentralized applications.",
-    icon: <Link size={32} className="text-[#ff6b35]" />,
+    title: "Mobile Development",
+    description: "Cross-platform mobile apps with Flutter and Dart.",
+    icon: <Smartphone size={32} className="text-[#ff6b35]" />,
   },
   {
     title: "Research & Innovation",

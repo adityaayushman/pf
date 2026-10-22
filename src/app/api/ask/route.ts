@@ -16,29 +16,31 @@ EDUCATION
 
 EXPERIENCE (5 internships)
 - KIIT (Kalinga Institute of Industrial Technology) — Research Intern (Jun 2026–present): AI-powered medical imaging (MedVision); Computer Vision, Deep Learning, Explainable AI for clinical decision support.
-- Osswal Infosystem Pvt. Ltd. (SAP Partner) — AI Intern, Indore (Jul 2026–present): enterprise software, hands-on industry experience.
-- Kukreja's Wastec Bio-Gas Pvt. Ltd. — Intern, Mumbai (Jun 2026–present): building PCBMind AI, an AI PCB defect-inspection platform (computer vision + deep learning).
-- Syllogistek Systems Pvt. Ltd. — Summer Intern (Jun 2025–Jul 2026): AI solutions with Generative AI, Keras, PyTorch.
+- Osswal Infosystem Pvt. Ltd. (SAP Partner) — Flutter Developer Intern, Indore (Jul 2026–present): developing cross-platform mobile app features in Flutter (Dart) for a client project built on SAP Business One, working with senior developers and SAP consultants through implementation, testing and code reviews.
+- Kukreja's Wastec Bio-Gas Pvt. Ltd. — AI/ML Intern, Mumbai (Jun 2026–present): building PCBMind AI, an AI PCB defect-inspection platform (computer vision + deep learning).
+- Syllogistek Systems Pvt. Ltd. — Summer Intern (Jun 2025–Jul 2025): AI solutions with Generative AI, Keras, PyTorch.
 - Silicon Institute of Technology (SIT) — Summer Intern (Jun 2024–Jul 2024): Python, Machine Learning, Deep Learning.
 
 FLAGSHIP PROJECTS
-- PCBMind AI — AI-powered PCB defect-inspection SaaS: image preprocessing (CLAHE, ORB, homography), defect detection, FastAPI backend, React.js dashboard, PostgreSQL/Supabase, Docker; exportable PDF/CSV reports. Stack: PyTorch, YOLOv8, FastAPI, React.js, Supabase.
+- PCBMind AI — built during his AI/ML internship at Kukreja's Wastec; live demo: https://pcbmind-ai.vercel.app/. AI-powered PCB defect-inspection SaaS: image preprocessing (CLAHE, ORB, homography), defect detection, FastAPI backend, React.js dashboard, PostgreSQL/Supabase, Docker; exportable PDF/CSV reports. Stack: PyTorch, YOLOv8, FastAPI, React.js, Supabase.
 - MedVision — AI medical-imaging platform for intelligent clinical decision support (Computer Vision, Deep Learning, Explainable AI). Stack: Python, PyTorch, OpenCV, FastAPI, React.js.
-- Cloud Computing Resource Optimizer — multi-cloud resource optimizer using ML + Reinforcement Learning: XGBoost & Random Forest forecasting, Deep Q-Network (DQN) scheduling, Explainable AI. PUBLISHED on SSRN.
+- Cloud Computing Resource Optimizer — multi-cloud resource optimizer using ML + Reinforcement Learning: XGBoost & Random Forest forecasting, Deep Q-Network (DQN) scheduling, Explainable AI. SSRN Preprint (2026).
+
+- GridSense — carbon-aware EV charging optimizer: schedules home EV charging into off-peak, low-carbon hours with a linear-programming optimizer on real Spanish grid data. Stack: Python, PuLP, FastAPI, PostgreSQL, React, TypeScript, Docker. Live: https://gridsense-app-drab.vercel.app/
+- Smart Road Guardian AI X — explainable edge-AI road-safety platform for Indian roads: predicts crash risk with causal Bayesian networks, live risk scoring, helmet detection, near-miss black-spot detection and fleet monitoring. Stack: Python, PyTorch, ONNX, pgmpy, Next.js, Supabase. Live: https://trie-dashboard.vercel.app/
 
 OTHER PROJECTS
 - CrowdCount — real-time multi-zone crowd analytics using YOLOv8, dual-pipeline, heatmaps, FastAPI.
 - Clear Pixel — grayscale image enhancement/filtering from scratch (Gaussian blur, Sobel, Laplacian) with OpenCV/NumPy.
-- AI-Powered Accident Detection (YOLO + LSTM), Decentralized Medical Records (blockchain + IPFS), and more on GitHub.
 
-PUBLICATION
-- "Cloud Computing Resource Optimizer" — published on SSRN.
+RESEARCH
+- "Cloud Computing Resource Optimizer" — SSRN Preprint (2026): https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6957438
 
 SKILLS
 - Programming: Python, Java, SQL, C, C++, JavaScript.
 - AI/ML & CV: Machine Learning, Deep Learning, Computer Vision, YOLOv8, Reinforcement Learning, Explainable AI, TensorFlow, PyTorch, Keras, OpenCV, XGBoost, Random Forest, NumPy, Matplotlib.
-- Web & Backend: React.js, Next.js, FastAPI, REST APIs.
-- Databases & Tools: PostgreSQL, MySQL, Supabase, Git, Docker; also Blockchain, Solidity, IPFS.
+- Web & App: React.js, Next.js, FastAPI, REST APIs, Flutter, Dart.
+- Databases & Tools: PostgreSQL, MySQL, Supabase, Git, Docker.
 
 CERTIFICATIONS
 - NPTEL — Programming in Java. Cisco — Networking Basics. MathWorks — Deep Learning Onramp. Tata — Data Visualisation (Forage). AICTE NEAT — Cybersecurity Virtual Internship.

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
 const items = [
-  "Published — Cloud Optimizer (SSRN)",
+  "SSRN Preprint (2026) — Cloud Optimizer",
   "Research Intern — KIIT · MedVision",
   "5× Industry Internships",
   "Committee Head — Aaruush, SRM University",

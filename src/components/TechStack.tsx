@@ -30,7 +30,7 @@ const stack = [
   {
     category: "Web & Backend",
     icon: <Code2 size={22} />,
-    items: ["React", "Next.js", "TypeScript", "FastAPI", "REST APIs"],
+    items: ["React", "Next.js", "TypeScript", "FastAPI", "REST APIs", "Flutter", "Dart"],
   },
   {
     category: "Databases",
@@ -38,9 +38,9 @@ const stack = [
     items: ["PostgreSQL", "MySQL", "Supabase"],
   },
   {
-    category: "Cloud & Blockchain",
+    category: "Cloud",
     icon: <Boxes size={22} />,
-    items: ["Vercel", "Cloud Computing", "Solidity", "IPFS"],
+    items: ["Vercel", "Cloud Computing", "Docker"],
   },
 ];
 
