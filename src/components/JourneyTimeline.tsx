@@ -6,28 +6,13 @@ import { motion } from "framer-motion";
 const timelineItems = [
   {
     year: "2023",
-    title: "Started B.Tech in Artificial Intelligence",
+    title: "Started B.Tech CSE (AI & ML)",
     description: "Began my degree at SRM Institute of Science and Technology, Chennai — building strong foundations in programming, mathematics and AI.",
   },
   {
     year: "2024",
     title: "Summer Intern @ Silicon Institute of Technology",
     description: "Hands-on with software development, Python, Machine Learning and Deep Learning. Earned NPTEL certification in Programming in Java.",
-  },
-  {
-    year: "2024",
-    title: "First Full Stack Projects",
-    description: "Developed management systems and database-driven applications.",
-  },
-  {
-    year: "2025",
-    title: "AI & Computer Vision Projects",
-    description: "Built accident-detection systems using YOLO and LSTM, and explored real-time video intelligence.",
-  },
-  {
-    year: "2025",
-    title: "Blockchain Healthcare Research",
-    description: "Created decentralized medical-record systems using blockchain and IPFS.",
   },
   {
     year: "2025",
@@ -41,8 +26,8 @@ const timelineItems = [
   },
   {
     year: "2026",
-    title: "Intern @ Osswal Infosystem (SAP Partner)",
-    description: "Gaining hands-on industry experience in a professional software-development environment in Indore — learning enterprise technologies, collaborating with experienced professionals, and contributing to real-world projects.",
+    title: "Flutter Developer Intern @ Osswal Infosystem (SAP Partner)",
+    description: "Developing cross-platform mobile app features in Flutter (Dart) for a client project built on SAP Business One, working with senior developers and SAP consultants through implementation, testing and code reviews.",
   },
   {
     year: "Future",

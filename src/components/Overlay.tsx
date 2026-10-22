@@ -58,7 +58,7 @@ export default function Overlay({
           Aditya Ayushman Sahoo.
         </h2>
         <span className="text-[#9ca3af] text-lg md:text-xl font-medium tracking-wide">
-          B.Tech Artificial Intelligence @ SRM • Deep Learning & Real-Time Systems
+          B.Tech CSE (AI & ML), SRM Institute of Science and Technology, Class of 2027
         </span>
       </motion.div>
 

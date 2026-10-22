@@ -12,7 +12,6 @@ const row1 = [
   "PyTorch",
   "TensorFlow",
   "Keras",
-  "Generative AI",
   "Full Stack Developer",
 ];
 
@@ -25,7 +24,6 @@ const row2 = [
   "React.js",
   "Next.js",
   "LSTM Models",
-  "Blockchain",
   "Cloud Computing",
   "Problem Solver",
 ];

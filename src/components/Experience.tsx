@@ -27,19 +27,18 @@ const experiences: Experience[] = [
     tech: ["Computer Vision", "Deep Learning", "Explainable AI"],
   },
   {
-    role: "AI Intern",
+    role: "Flutter Developer Intern",
     company: "Osswal Infosystem Pvt. Ltd.",
     tag: "SAP Partner",
     period: "Jul 2026 – Present",
     location: "Indore, India",
     points: [
-      "Gaining hands-on industry experience in a professional software-development environment.",
-      "Learning enterprise technologies, collaborating with experienced professionals, and contributing to real-world projects.",
+      "Developing cross-platform mobile app features in Flutter (Dart) for a client project built on SAP Business One, working with senior developers and SAP consultants through implementation, testing and code reviews.",
     ],
-    tech: ["Enterprise Software", "SAP Ecosystem"],
+    tech: ["Flutter", "Dart", "SAP Business One"],
   },
   {
-    role: "Intern",
+    role: "AI/ML Intern",
     company: "Kukreja's Wastec Bio-Gas Pvt. Ltd.",
     tag: "AI · Computer Vision",
     period: "Jun 2026 – Present",
@@ -54,7 +53,7 @@ const experiences: Experience[] = [
     role: "Summer Intern",
     company: "Syllogistek Systems Pvt. Ltd.",
     tag: "AI / Software",
-    period: "Jun 2025 – Jul 2026",
+    period: "Jun 2025 – Jul 2025",
     location: "India",
     points: [
       "Developed software solutions addressing AI-related challenges.",

@@ -13,11 +13,7 @@ type ProjectTheme =
   | "cloud"
   | "pixels"
   | "detection"
-  | "pulse"
-  | "blockchain"
-  | "parking"
-  | "grid"
-  | "chart"
+  | "energy"
   | "scan";
 
 type Project = {
@@ -25,11 +21,60 @@ type Project = {
   description: string;
   tech: string[];
   repo?: string;
+  live?: string;
+  paper?: string;
   theme: ProjectTheme;
   featured?: boolean;
 };
 
 const projects: Project[] = [
+  {
+    title: "PCBMind AI — Automated PCB Defect Inspection",
+    description:
+      "Built during my AI/ML internship at Kukreja's Wastec Bio-Gas. AI-powered PCB defect-inspection platform that automates defect detection and quality assessment — image preprocessing (CLAHE, ORB, homography), a FastAPI backend, a React.js analytics dashboard and exportable PDF/CSV reports.",
+    tech: ["PyTorch", "YOLOv8", "FastAPI", "React.js", "Supabase"],
+    repo: "https://github.com/adityaayushman/pcb-mind",
+    live: "https://pcbmind-ai.vercel.app/",
+    theme: "circuit",
+    featured: true,
+  },
+  {
+    title: "GridSense — Carbon-Aware EV Charging Optimizer",
+    description:
+      "Schedules home EV charging into off-peak, low-carbon hours using a linear-programming optimizer on real Spanish grid data, reducing grid strain and emissions. Full-stack dashboard with FastAPI, PostgreSQL and React.",
+    tech: ["Python", "PuLP", "FastAPI", "PostgreSQL", "React", "TypeScript", "Docker"],
+    repo: GITHUB_URL,
+    live: "https://gridsense-app-drab.vercel.app/",
+    theme: "energy",
+  },
+  {
+    title: "MedVision — AI-Powered Medical Imaging Intelligence",
+    description:
+      "AI-powered medical-imaging platform for intelligent clinical decision support — computer vision and deep learning with Explainable AI, delivered through a FastAPI backend and a React dashboard.",
+    tech: ["Python", "PyTorch", "OpenCV", "FastAPI", "React.js"],
+    repo: "https://github.com/adityaayushman/medvision",
+    live: "https://medchron-ai.vercel.app/",
+    theme: "scan",
+    featured: true,
+  },
+  {
+    title: "Smart Road Guardian AI X — Edge AI Road Safety",
+    description:
+      "Explainable road-safety platform for Indian roads that predicts crash risk with causal Bayesian networks, with live risk scoring, helmet detection, near-miss black-spot detection and fleet monitoring.",
+    tech: ["Python", "PyTorch", "ONNX", "pgmpy", "Next.js", "Supabase"],
+    repo: GITHUB_URL,
+    live: "https://trie-dashboard.vercel.app/",
+    theme: "detection",
+  },
+  {
+    title: "Cloud Computing Resource Optimizer",
+    description:
+      "Multi-cloud resource optimizer that forecasts CPU and memory demand with XGBoost and Random Forest, then schedules allocation through a Deep Q-Network. Explainable AI keeps every decision transparent and interpretable. SSRN Preprint (2026).",
+    tech: ["Python", "XGBoost", "Reinforcement Learning", "DQN"],
+    paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6957438",
+    theme: "cloud",
+    featured: true,
+  },
   {
     title: "CrowdCount — Real-Time Crowd Intelligence",
     description:
@@ -39,79 +84,11 @@ const projects: Project[] = [
     theme: "crowd",
   },
   {
-    title: "PCBMind AI — PCB Defect Inspection",
-    description:
-      "AI-powered PCB defect-inspection platform that automates defect detection and quality assessment — image preprocessing (CLAHE, ORB, homography), a FastAPI backend, a React.js analytics dashboard and exportable PDF/CSV reports.",
-    tech: ["PyTorch", "YOLOv8", "FastAPI", "React.js", "Supabase"],
-    repo: "https://github.com/adityaayushman/pcb-mind",
-    theme: "circuit",
-    featured: true,
-  },
-  {
-    title: "MedVision — AI Medical Imaging Intelligence",
-    description:
-      "AI-powered medical-imaging platform for intelligent clinical decision support — computer vision and deep learning with Explainable AI, delivered through a FastAPI backend and a React dashboard.",
-    tech: ["Python", "PyTorch", "OpenCV", "FastAPI", "React.js"],
-    repo: "https://github.com/adityaayushman/medvision",
-    theme: "scan",
-    featured: true,
-  },
-  {
-    title: "Cloud Computing Resource Optimizer",
-    description:
-      "Multi-cloud resource optimizer that forecasts CPU and memory demand with XGBoost and Random Forest, then schedules allocation through a Deep Q-Network. Explainable AI keeps every decision transparent and interpretable.",
-    tech: ["Python", "XGBoost", "Reinforcement Learning", "DQN"],
-    theme: "cloud",
-    featured: true,
-  },
-  {
     title: "Clear Pixel — Image Enhancement Engine",
     description:
       "Grayscale image-processing system that improves clarity and reduces noise — Gaussian blur, Sobel edge detection, Laplacian and sharpening built from scratch with manual convolution, plus real-time visualization.",
     tech: ["Python", "OpenCV", "NumPy", "Matplotlib"],
     theme: "pixels",
-  },
-  {
-    title: "AI-Powered Accident Detection System",
-    description:
-      "Real-time accident detection using YOLO and LSTM models, deployed on edge devices to alert emergency services instantly.",
-    tech: ["Python", "YOLOv8", "LSTM", "OpenCV"],
-    theme: "detection",
-  },
-  {
-    title: "Hospital Emergency Response Platform",
-    description:
-      "A centralized platform for hospitals to coordinate emergency response units and track patient admission flow.",
-    tech: ["Next.js", "Node.js", "Socket.io", "PostgreSQL"],
-    theme: "pulse",
-  },
-  {
-    title: "Decentralized Medical Record System",
-    description:
-      "A secure blockchain-based healthcare record system using IPFS for decentralized data storage.",
-    tech: ["Solidity", "React", "Ether.js", "IPFS"],
-    theme: "blockchain",
-  },
-  {
-    title: "Intelligent Parking System",
-    description:
-      "Computer vision based parking management that guides drivers to empty spots and automates billing.",
-    tech: ["Python", "TensorFlow", "React", "Firebase"],
-    theme: "parking",
-  },
-  {
-    title: "Restaurant Management System",
-    description:
-      "A comprehensive full-stack solution for table reservations, order tracking, and inventory management.",
-    tech: ["Spring Boot", "React", "MySQL", "Tailwind"],
-    theme: "grid",
-  },
-  {
-    title: "Road Safety Analytics Platform",
-    description:
-      "A data visualization dashboard analyzing traffic patterns and accident hotspots to assist city planning.",
-    tech: ["Next.js", "Tailwind", "Prisma", "Supabase"],
-    theme: "chart",
   },
 ];
 
@@ -203,81 +180,14 @@ function renderTheme(theme: ProjectTheme) {
           ))}
         </>
       );
-    case "pulse":
+    case "energy":
       return (
         <>
-          <line x1="0" y1="60" x2="320" y2="60" stroke="white" strokeOpacity="0.08" />
-          <path
-            d="M0 60 H70 L84 60 L94 30 L108 92 L122 60 L150 60 L160 46 L170 60 H320"
-            stroke={O}
-            strokeOpacity="0.65"
-            strokeWidth="2"
-            fill="none"
-          />
-          <g fill="white" fillOpacity="0.14">
-            <rect x="272" y="20" width="10" height="30" rx="2" />
-            <rect x="262" y="30" width="30" height="10" rx="2" />
-          </g>
-        </>
-      );
-    case "blockchain":
-      return (
-        <>
-          <line x1="30" y1="60" x2="290" y2="60" stroke={O} strokeOpacity="0.35" strokeWidth="1.5" strokeDasharray="4 5" />
-          {[46, 116, 186, 256].map((x, i) => (
-            <g key={i}>
-              <rect x={x - 19} y="41" width="38" height="38" rx="7" fill="white" fillOpacity="0.05" stroke={O} strokeOpacity="0.5" strokeWidth="1.5" />
-              <rect x={x - 9} y="52" width="18" height="4" rx="2" fill="white" fillOpacity="0.22" />
-              <rect x={x - 9} y="60" width="18" height="4" rx="2" fill="white" fillOpacity="0.12" />
-            </g>
+          <line x1="8" y1="100" x2="312" y2="100" stroke="white" strokeOpacity="0.12" />
+          {[34, 26, 20, 16, 22, 48, 70, 84, 66, 40, 28, 24].map((h, i) => (
+            <rect key={i} x={14 + i * 25} y={100 - h} width="18" height={h} rx="3" fill={i >= 5 && i <= 8 ? "white" : O} fillOpacity={i >= 5 && i <= 8 ? 0.1 : 0.55} />
           ))}
-        </>
-      );
-    case "parking":
-      return (
-        <>
-          {[...Array(2)].flatMap((_, row) =>
-            [...Array(6)].map((__, c) => {
-              const occ = (row * 6 + c) % 3 === 0;
-              return (
-                <rect
-                  key={`${row}-${c}`}
-                  x={16 + c * 50}
-                  y={row === 0 ? 16 : 66}
-                  width="40"
-                  height="38"
-                  rx="4"
-                  fill={occ ? O : "white"}
-                  fillOpacity={occ ? 0.5 : 0.05}
-                  stroke="white"
-                  strokeOpacity="0.1"
-                />
-              );
-            })
-          )}
-        </>
-      );
-    case "grid":
-      return (
-        <>
-          {[...Array(3)].map((_, i) => (
-            <g key={i}>
-              <rect x="18" y={20 + i * 32} width="18" height="18" rx="4" fill={O} fillOpacity={0.5 - i * 0.12} />
-              <rect x="46" y={24 + i * 32} width={180 - i * 30} height="4" rx="2" fill="white" fillOpacity="0.16" />
-              <rect x="46" y={32 + i * 32} width={120 - i * 22} height="4" rx="2" fill="white" fillOpacity="0.08" />
-            </g>
-          ))}
-          <rect x="250" y="20" width="52" height="80" rx="6" fill="white" fillOpacity="0.04" stroke="white" strokeOpacity="0.1" />
-        </>
-      );
-    case "chart":
-      return (
-        <>
-          <line x1="18" y1="100" x2="302" y2="100" stroke="white" strokeOpacity="0.12" />
-          {[42, 70, 55, 86, 60, 96, 74].map((h, i) => (
-            <rect key={i} x={30 + i * 38} y={100 - h} width="20" height={h} rx="3" fill={O} fillOpacity={0.25 + (i % 3) * 0.12} />
-          ))}
-          <path d="M40 70 L78 50 L116 62 L154 34 L192 56 L230 24 L268 46" stroke="white" strokeOpacity="0.4" strokeWidth="2" fill="none" />
+          <path d="M14 70 C 70 74, 110 40, 160 24 S 260 60, 306 36" stroke={O} strokeOpacity="0.5" strokeWidth="1.5" strokeDasharray="4 5" fill="none" />
         </>
       );
     case "scan":
@@ -315,11 +225,6 @@ function ProjectVisual({ theme }: { theme: ProjectTheme }) {
 }
 
 export default function FeaturedProjects() {
-  const ordered = [
-    ...projects.filter((p) => p.featured),
-    ...projects.filter((p) => !p.featured),
-  ];
-
   return (
     <section id="projects" className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
       <motion.div
@@ -334,7 +239,7 @@ export default function FeaturedProjects() {
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {ordered.map((project, idx) => (
+        {projects.map((project, idx) => (
           <motion.div
             key={project.title}
             initial={{ opacity: 0, y: 30 }}
@@ -368,15 +273,37 @@ export default function FeaturedProjects() {
             </div>
 
             <div className="flex items-center gap-4 mt-auto">
-              <a
-                href={project.repo ?? GITHUB_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#ff6b35] transition-colors"
-              >
-                <GitBranch size={18} />
-                <span>GitHub</span>
-              </a>
+              {(project.repo || !project.paper) && (
+                <a
+                  href={project.repo ?? GITHUB_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#ff6b35] transition-colors"
+                >
+                  <GitBranch size={18} />
+                  <span>GitHub</span>
+                </a>
+              )}
+              {project.live && (
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#ff6b35] transition-colors"
+                >
+                  <span>Live Demo ↗</span>
+                </a>
+              )}
+              {project.paper && (
+                <a
+                  href={project.paper}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#ff6b35] transition-colors"
+                >
+                  <span>SSRN Preprint ↗</span>
+                </a>
+              )}
             </div>
           </motion.div>
         ))}

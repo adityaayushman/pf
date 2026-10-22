@@ -9,17 +9,13 @@ type Research = { title: string; tech: string; link?: string };
 const researches: Research[] = [
   {
     title: "Cloud Computing Resource Optimizer",
-    tech: "Published · SSRN",
+    tech: "SSRN Preprint (2026)",
     link: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6957438",
   },
   {
     title: "MedVision — AI Medical Imaging",
     tech: "Computer Vision · KIIT Research",
     link: "https://github.com/adityaayushman/medvision",
-  },
-  {
-    title: "AI-Powered Road Accident Detection",
-    tech: "YOLO + LSTM",
   },
 ];
 

@@ -22,7 +22,7 @@ const INTENTS: Intent[] = [
       "about aditya", "summary", "introduce", "overview", "suited", "candidate",
     ],
     answer:
-      "Aditya is an AI & Machine Learning engineer (SRM, Class of 2027) who ships real, end-to-end systems — from a cloud-optimization paper published on SSRN to computer-vision platforms like PCBMind AI and MedVision. He pairs strong fundamentals (300+ LeetCode problems solved) with 5 internships and hands-on YOLOv8 / PyTorch / FastAPI experience. For an ML or software role he brings genuine build-and-ship ability, not just theory. Want specifics on any project?",
+      "Aditya is an AI & Machine Learning engineer (SRM, Class of 2027) who ships real, end-to-end systems — from a cloud-optimization SSRN preprint to computer-vision platforms like PCBMind AI and MedVision. He pairs strong fundamentals (300+ LeetCode problems solved) with 5 internships and hands-on YOLOv8 / PyTorch / FastAPI experience. For an ML or software role he brings genuine build-and-ship ability, not just theory. Want specifics on any project?",
   },
   {
     keywords: [
@@ -35,7 +35,7 @@ const INTENTS: Intent[] = [
   {
     keywords: ["pcb", "pcbmind", "defect", "inspection", "board"],
     answer:
-      "PCBMind AI is an AI-powered PCB defect-inspection platform: it preprocesses board images (CLAHE, ORB, homography), detects defects with computer vision + deep learning, and generates exportable PDF/CSV quality reports. Built with PyTorch, YOLOv8, FastAPI, a React.js dashboard and PostgreSQL/Supabase — he's building it during his internship at Kukreja's Wastec.",
+      "PCBMind AI is an AI-powered PCB defect-inspection platform: it preprocesses board images (CLAHE, ORB, homography), detects defects with computer vision + deep learning, and generates exportable PDF/CSV quality reports. Built with PyTorch, YOLOv8, FastAPI, a React.js dashboard and PostgreSQL/Supabase — he built it during his AI/ML internship at Kukreja's Wastec. Live demo: https://pcbmind-ai.vercel.app/",
   },
   {
     keywords: ["medvision", "medical", "imaging", "clinical", "healthcare", "health"],
@@ -48,7 +48,17 @@ const INTENTS: Intent[] = [
       "paper", "research", "published", "dqn", "reinforcement",
     ],
     answer:
-      "The Cloud Computing Resource Optimizer is a multi-cloud resource manager using machine learning and reinforcement learning — XGBoost and Random Forest to forecast CPU/memory demand, a Deep Q-Network (DQN) for scheduling, and Explainable AI for transparency. It's published on SSRN.",
+      "The Cloud Computing Resource Optimizer is a multi-cloud resource manager using machine learning and reinforcement learning — XGBoost and Random Forest to forecast CPU/memory demand, a Deep Q-Network (DQN) for scheduling, and Explainable AI for transparency. It's an SSRN preprint (2026).",
+  },
+  {
+    keywords: ["gridsense", "ev", "charging", "carbon", "grid", "energy"],
+    answer:
+      "GridSense is a carbon-aware EV charging optimizer: a linear-programming model (PuLP) schedules home charging into off-peak, low-carbon hours using real Spanish grid data, reducing grid strain and emissions. It has a full-stack dashboard built with FastAPI, PostgreSQL and React. Live demo: https://gridsense-app-drab.vercel.app/",
+  },
+  {
+    keywords: ["road", "guardian", "safety", "crash", "helmet", "bayesian", "fleet"],
+    answer:
+      "Smart Road Guardian AI X is an explainable edge-AI road-safety platform for Indian roads. It predicts crash risk with causal Bayesian networks and adds live risk scoring, helmet detection, near-miss black-spot detection and fleet monitoring (Python, PyTorch, ONNX, pgmpy, Next.js, Supabase). Live demo: https://trie-dashboard.vercel.app/",
   },
   {
     keywords: ["crowd", "crowdcount", "people detection", "heatmap"],
@@ -58,7 +68,7 @@ const INTENTS: Intent[] = [
   {
     keywords: ["project", "built", "portfolio", "made", "showcase", "worked on"],
     answer:
-      "Aditya's flagship projects are:\n• PCBMind AI — AI PCB defect-inspection SaaS (PyTorch, YOLOv8, FastAPI, React)\n• MedVision — AI medical imaging for clinical decision support\n• Cloud Computing Resource Optimizer — ML + reinforcement learning, published on SSRN\nHe's also built CrowdCount (YOLOv8 crowd analytics), Clear Pixel, accident detection and more. Ask me about any of them!",
+      "Aditya's flagship projects are:\n• PCBMind AI — AI PCB defect-inspection SaaS (PyTorch, YOLOv8, FastAPI, React)\n• MedVision — AI medical imaging for clinical decision support\n• Cloud Computing Resource Optimizer — ML + reinforcement learning, SSRN preprint (2026)\n• GridSense — carbon-aware EV charging optimizer (linear programming, FastAPI, React)\n• Smart Road Guardian AI X — edge-AI road safety with causal Bayesian networks\nHe's also built CrowdCount (YOLOv8 crowd analytics), and Clear Pixel. Ask me about any of them!",
   },
   {
     keywords: [
@@ -66,7 +76,7 @@ const INTENTS: Intent[] = [
       "employment", "kiit", "osswal", "kukreja", "syllogistek", "silicon",
     ],
     answer:
-      "Aditya has done 5 internships:\n• KIIT — Research Intern (AI medical imaging / MedVision)\n• Osswal Infosystem, a SAP Partner — AI Intern (Indore)\n• Kukreja's Wastec — Intern, building PCBMind AI (Mumbai)\n• Syllogistek Systems — Summer Intern (Generative AI, Keras, PyTorch)\n• Silicon Institute of Technology — Summer Intern (Python, ML, DL)",
+      "Aditya has done 5 internships:\n• KIIT — Research Intern (AI medical imaging / MedVision)\n• Osswal Infosystem, a SAP Partner — Flutter Developer Intern (Indore)\n• Kukreja's Wastec — AI/ML Intern, built PCBMind AI (Mumbai)\n• Syllogistek Systems — Summer Intern (Generative AI, Keras, PyTorch)\n• Silicon Institute of Technology — Summer Intern (Python, ML, DL)",
   },
   {
     keywords: [
@@ -74,7 +84,7 @@ const INTENTS: Intent[] = [
       "study", "student", "school", "btech", "b.tech", "graduat", "academ",
     ],
     answer:
-      "Aditya is pursuing a B.Tech in Computer Science & Engineering (AI & ML) at SRM Institute of Science and Technology, Chennai — Class of 2027, with a CGPA of 7.5/10. He completed his schooling at DAV Public School, Bhubaneswar.",
+      "Aditya is pursuing a B.Tech CSE (AI & ML) at SRM Institute of Science and Technology, Class of 2027, with a CGPA of 7.5/10. He completed his schooling at DAV Public School, Bhubaneswar.",
   },
   {
     keywords: ["certif", "certificate", "nptel", "cisco", "mathworks", "course", "credential"],
