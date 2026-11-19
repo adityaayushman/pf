@@ -59,3 +59,21 @@ h1, h2, h3 {
   letter-spacing: -0.03em;
   line-height: 1.07;
 }
+
+/* Light section (Apple-style alternating rhythm). Re-maps the dark palette used by its children. */
+.section-light {
+  background: #f5f5f7;
+  color: #1d1d1f;
+}
+.section-light .text-white { color: #1d1d1f; }
+.section-light [class*="text-[#a1a1a6]"],
+.section-light [class*="text-[#d2d2d7]"] { color: #6e6e73; }
+.section-light [class*="text-[#86868b]"] { color: #86868b; }
+.section-light [class*="bg-[#1d1d1f]"] { background-color: #ffffff; }
+.section-light [class*="hover:bg-[#2a2a2d]"]:hover { background-color: #ffffff; }
+.section-light [class*="bg-white/10"],
+.section-light [class*="bg-white/5"] { background-color: rgba(0, 0, 0, 0.06); }
+.section-light [class*="border-white"] { border-color: rgba(0, 0, 0, 0.1); }
+.section-light [class*="text-[#2997ff]"] { color: #0066cc; }
+.section-light a.text-white:hover,
+.section-light a[class*="hover:text-[#2997ff]"]:hover { color: #0066cc; }
