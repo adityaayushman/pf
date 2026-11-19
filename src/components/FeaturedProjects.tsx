@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { GitBranch } from "lucide-react";
 
@@ -25,6 +25,8 @@ type Project = {
   paper?: string;
   theme: ProjectTheme;
   featured?: boolean;
+  embed?: boolean; // live site allows being shown in an iframe
+  metric?: string; // one measured headline result from the project README
 };
 
 const projects: Project[] = [
@@ -35,6 +37,7 @@ const projects: Project[] = [
     tech: ["PyTorch", "YOLOv8", "FastAPI", "React.js", "Supabase"],
     repo: "https://github.com/adityaayushman/pcb-mind",
     live: "https://pcbmind-ai.vercel.app/",
+    embed: true,
     theme: "circuit",
     featured: true,
   },
@@ -45,6 +48,8 @@ const projects: Project[] = [
     tech: ["Python", "PuLP", "FastAPI", "PostgreSQL", "React", "TypeScript", "Docker"],
     repo: "https://github.com/adityaayushman/GRIDSENSE",
     live: "https://gridsense-app-drab.vercel.app/",
+    embed: true,
+    metric: "4.1× more EVs per street transformer (median of 20 fleet draws)",
     theme: "energy",
   },
   {
@@ -54,6 +59,8 @@ const projects: Project[] = [
     tech: ["Python", "PyTorch", "OpenCV", "FastAPI", "React.js"],
     repo: "https://github.com/adityaayushman/medvision",
     live: "https://medchron-ai.vercel.app/",
+    embed: true,
+    metric: "Brain MRI: 85.7% accuracy · ROC-AUC 0.969",
     theme: "scan",
     featured: true,
   },
@@ -64,6 +71,8 @@ const projects: Project[] = [
     tech: ["Python", "PyTorch", "ONNX", "pgmpy", "Next.js", "Supabase"],
     repo: "https://github.com/adityaayushman/TRIE",
     live: "https://trie-dashboard.vercel.app/",
+    embed: true,
+    metric: "Helmet detection mAP 78% · LSTM forecast cuts error ~47%",
     theme: "detection",
   },
   {
@@ -72,7 +81,7 @@ const projects: Project[] = [
       "Multi-cloud resource optimizer that forecasts CPU and memory demand with XGBoost, then sets capacity across AWS, Azure and GCP with a Deep Q-Network, with Isolation Forest anomaly detection and SHAP explaining every decision. SSRN Preprint (2026).",
     tech: ["Python", "XGBoost", "Deep Q-Network", "SHAP", "FastAPI", "React"],
     repo: "https://github.com/adityaayushman/Cloud-Resource-Optimizer",
-    live: "https://cloudresourceoptimizer.vercel.app/",
+    metric: "$10.03/day vs $15.10 for the ML-only baseline (3 seeds × 24 h)",
     paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6957438",
     theme: "cloud",
     featured: true,
@@ -99,6 +108,7 @@ const projects: Project[] = [
     tech: ["PyTorch", "ST-GCN", "TensorFlow.js", "FastAPI", "Next.js"],
     repo: "https://github.com/adityaayushman/FBimpact",
     live: "https://fbimpact-api.onrender.com/docs",
+    metric: "~0.49 s lead time before impact · 63% recall (UR Fall, 15 folds)",
     theme: "scan",
   },
   {
@@ -108,6 +118,7 @@ const projects: Project[] = [
     tech: ["Python", "scikit-learn", "NLP", "FastAPI", "React"],
     repo: "https://github.com/adityaayushman/AI-Placement-Coach",
     live: "https://ai-placement-coach-murex.vercel.app/",
+    embed: true,
     theme: "cloud",
   },
   {
@@ -117,6 +128,7 @@ const projects: Project[] = [
     tech: ["Supabase", "PostgreSQL", "JavaScript", "Razorpay", "Claude API"],
     repo: "https://github.com/adityaayushman/WESTEC",
     live: "https://westec-phi.vercel.app/",
+    metric: "24 automated schema tests · row-level-security multi-tenancy",
     theme: "energy",
   },
   {
@@ -261,6 +273,79 @@ function ProjectVisual({ theme }: { theme: ProjectTheme }) {
   );
 }
 
+function LivePreview({ url, title }: { url: string; title: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [load, setLoad] = useState(false);
+  const [scale, setScale] = useState(0.4);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([e]) => setScale(e.contentRect.width / 1280));
+    ro.observe(el);
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setLoad(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+    io.observe(el);
+    return () => {
+      ro.disconnect();
+      io.disconnect();
+    };
+  }, []);
+
+  const host = url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+
+  return (
+    <div className="relative -mx-8 -mt-8 mb-6 hidden md:block bg-[#0a0a0a]">
+      <div className="flex items-center gap-2 px-4 h-8 bg-[#2a2a2d]">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+        <span className="ml-3 truncate rounded-md bg-black/40 px-3 py-0.5 text-[11px] text-[#a1a1a6]">
+          {host}
+        </span>
+      </div>
+      <div ref={ref} className="relative aspect-[16/10] overflow-hidden">
+        {load && (
+          <iframe
+            src={url}
+            title={`${title} live preview`}
+            loading="lazy"
+            tabIndex={-1}
+            referrerPolicy="no-referrer"
+            sandbox="allow-scripts allow-same-origin"
+            style={{
+              width: 1280,
+              height: 800,
+              transform: `scale(${scale})`,
+              transformOrigin: "top left",
+              border: 0,
+              pointerEvents: "none",
+            }}
+          />
+        )}
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${title} live site`}
+          className="absolute inset-0 z-10 flex items-end justify-center bg-black/0 pb-5 opacity-0 transition-all duration-300 hover:bg-black/40 hover:opacity-100 focus-visible:bg-black/40 focus-visible:opacity-100"
+        >
+          <span className="rounded-full bg-[#0071e3] px-5 py-2 text-sm font-medium text-white">
+            Open live site ↗
+          </span>
+        </a>
+      </div>
+    </div>
+  );
+}
+
 export default function FeaturedProjects() {
   return (
     <section id="projects" className="py-28 md:py-44 px-6 md:px-12 max-w-7xl mx-auto">
@@ -274,7 +359,7 @@ export default function FeaturedProjects() {
         <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-4">Featured Work</h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.map((project, idx) => (
           <motion.div
             key={project.title}
@@ -290,9 +375,21 @@ export default function FeaturedProjects() {
               </span>
             )}
 
-            <ProjectVisual theme={project.theme} />
+            {project.embed && project.live ? (
+              <>
+                <LivePreview url={project.live} title={project.title} />
+                <div className="md:hidden">
+                  <ProjectVisual theme={project.theme} />
+                </div>
+              </>
+            ) : (
+              <ProjectVisual theme={project.theme} />
+            )}
 
-            <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
+            <h3 className="text-xl font-semibold text-white mb-3">{project.title}</h3>
+            {project.metric && (
+              <p className="mb-3 text-sm font-medium text-[#2997ff]">{project.metric}</p>
+            )}
             <p className="text-[#a1a1a6] mb-6 flex-grow leading-relaxed">
               {project.description}
             </p>

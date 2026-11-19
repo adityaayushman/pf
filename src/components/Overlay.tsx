@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 
 export default function Overlay({
   heroRef,
@@ -11,6 +11,15 @@ export default function Overlay({
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end end"],
+  });
+
+  // The overlay is position:fixed, so hide it once the hero scrolls out of view.
+  // (Its scroll-linked opacity can reset after the target leaves the viewport.)
+  const { scrollY } = useScroll();
+  const [visible, setVisible] = React.useState(true);
+  useMotionValueEvent(scrollY, "change", (y) => {
+    const el = heroRef.current;
+    if (el) setVisible(y < el.offsetTop + el.offsetHeight);
   });
 
   // Phase 1
@@ -29,7 +38,10 @@ export default function Overlay({
   const y4 = useTransform(scrollYProgress, [0.78, 1], [40, -40]);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-10 flex items-center justify-center">
+    <div
+      className="fixed inset-0 pointer-events-none z-10 flex items-center justify-center"
+      style={{ visibility: visible ? "visible" : "hidden" }}
+    >
       {/* Phase 1 */}
       <motion.div
         style={{ opacity: opacity1 }}
