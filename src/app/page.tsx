@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { MotionConfig } from "framer-motion";
 import Nav from "@/components/Nav";
 import ScrollProgress from "@/components/ScrollProgress";
 import AskMeAI from "@/components/AskMeAI";
@@ -23,6 +24,7 @@ export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
 
   return (
+    <MotionConfig reducedMotion="user">
     <main id="main">
       <a
         href="#glance"
@@ -68,5 +70,6 @@ export default function Home() {
       <Footer />
       <AskMeAI />
     </main>
+    </MotionConfig>
   );
 }

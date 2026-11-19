@@ -25,6 +25,8 @@ type Project = {
   paper?: string;
   theme: ProjectTheme;
   featured?: boolean;
+  image?: string; // animated demo from the project repo
+  caseStudy?: string; // internal case-study page
   embed?: boolean; // live site allows being shown in an iframe
   metric?: string; // one measured headline result from the project README
 };
@@ -37,6 +39,7 @@ const projects: Project[] = [
     tech: ["PyTorch", "YOLOv8", "FastAPI", "React.js", "Supabase"],
     repo: "https://github.com/adityaayushman/pcb-mind",
     live: "https://pcbmind-ai.vercel.app/",
+    image: "/projects/pcbmind.webp",
     embed: true,
     theme: "circuit",
     featured: true,
@@ -71,6 +74,8 @@ const projects: Project[] = [
     tech: ["Python", "PyTorch", "ONNX", "pgmpy", "Next.js", "Supabase"],
     repo: "https://github.com/adityaayushman/TRIE",
     live: "https://trie-dashboard.vercel.app/",
+    image: "/projects/trie.webp",
+    caseStudy: "/work/road-guardian",
     embed: true,
     metric: "Helmet detection mAP 78% · LSTM forecast cuts error ~47%",
     theme: "detection",
@@ -81,6 +86,7 @@ const projects: Project[] = [
       "Multi-cloud resource optimizer that forecasts CPU and memory demand with XGBoost, then sets capacity across AWS, Azure and GCP with a Deep Q-Network, with Isolation Forest anomaly detection and SHAP explaining every decision. SSRN Preprint (2026).",
     tech: ["Python", "XGBoost", "Deep Q-Network", "SHAP", "FastAPI", "React"],
     repo: "https://github.com/adityaayushman/Cloud-Resource-Optimizer",
+    image: "/projects/cloud-optimizer.webp",
     metric: "$10.03/day vs $15.10 for the ML-only baseline (3 seeds × 24 h)",
     paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6957438",
     theme: "cloud",
@@ -108,6 +114,7 @@ const projects: Project[] = [
     tech: ["PyTorch", "ST-GCN", "TensorFlow.js", "FastAPI", "Next.js"],
     repo: "https://github.com/adityaayushman/FBimpact",
     live: "https://fbimpact-api.onrender.com/docs",
+    image: "/projects/fbimpact.webp",
     metric: "~0.49 s lead time before impact · 63% recall (UR Fall, 15 folds)",
     theme: "scan",
   },
@@ -273,7 +280,7 @@ function ProjectVisual({ theme }: { theme: ProjectTheme }) {
   );
 }
 
-function LivePreview({ url, title }: { url: string; title: string }) {
+function LivePreview({ url, title, poster }: { url: string; title: string; poster?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [load, setLoad] = useState(false);
   const [scale, setScale] = useState(0.4);
@@ -312,6 +319,10 @@ function LivePreview({ url, title }: { url: string; title: string }) {
         </span>
       </div>
       <div ref={ref} className="relative aspect-[16/10] overflow-hidden">
+        {poster && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={poster} alt="" className="absolute inset-0 h-full w-full object-contain bg-[#0a0a0a]" />
+        )}
         {load && (
           <iframe
             src={url}
@@ -346,9 +357,35 @@ function LivePreview({ url, title }: { url: string; title: string }) {
   );
 }
 
+function DemoPreview({ src, title, href }: { src: string; title: string; href: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Open ${title}`}
+      className="relative -mx-8 -mt-8 mb-6 block bg-[#0a0a0a]"
+    >
+      <div className="flex items-center gap-2 px-4 h-8 bg-[#2a2a2d]">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+        <span className="ml-3 truncate rounded-md bg-black/40 px-3 py-0.5 text-[11px] text-[#a1a1a6]">
+          {href.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+        </span>
+      </div>
+      <div className="relative aspect-[16/10] overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={`${title} demo`} loading="lazy" className="h-full w-full object-contain" />
+      </div>
+    </a>
+  );
+}
+
 export default function FeaturedProjects() {
   return (
-    <section id="projects" className="py-28 md:py-44 px-6 md:px-12 max-w-7xl mx-auto">
+    <section id="projects" className="section-light">
+    <div className="py-28 md:py-44 px-6 md:px-12 max-w-7xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -377,11 +414,21 @@ export default function FeaturedProjects() {
 
             {project.embed && project.live ? (
               <>
-                <LivePreview url={project.live} title={project.title} />
+                <LivePreview url={project.live} title={project.title} poster={project.image} />
                 <div className="md:hidden">
-                  <ProjectVisual theme={project.theme} />
+                  {project.image ? (
+                    <DemoPreview src={project.image} title={project.title} href={project.live} />
+                  ) : (
+                    <ProjectVisual theme={project.theme} />
+                  )}
                 </div>
               </>
+            ) : project.image ? (
+              <DemoPreview
+                src={project.image}
+                title={project.title}
+                href={project.live ?? project.repo ?? GITHUB_URL}
+              />
             ) : (
               <ProjectVisual theme={project.theme} />
             )}
@@ -427,6 +474,14 @@ export default function FeaturedProjects() {
                   <span>Live Demo ↗</span>
                 </a>
               )}
+              {project.caseStudy && (
+                <a
+                  href={project.caseStudy}
+                  className="flex items-center gap-2 text-sm font-medium text-[#2997ff] hover:underline"
+                >
+                  <span>Case study →</span>
+                </a>
+              )}
               {project.paper && (
                 <a
                   href={project.paper}
@@ -441,6 +496,7 @@ export default function FeaturedProjects() {
           </motion.div>
         ))}
       </div>
+    </div>
     </section>
   );
 }
