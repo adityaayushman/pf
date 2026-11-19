@@ -16,7 +16,7 @@ export default function Image() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "90px",
-          background: "#0d0d0d",
+          background: "#000000",
           color: "white",
           fontFamily: "sans-serif",
         }}
@@ -24,7 +24,7 @@ export default function Image() {
         <div
           style={{
             display: "flex",
-            color: "#ff6b35",
+            color: "#2997ff",
             fontSize: 30,
             fontWeight: 700,
             letterSpacing: 4,
@@ -48,7 +48,7 @@ export default function Image() {
             display: "flex",
             fontSize: 44,
             fontWeight: 600,
-            color: "#9ca3af",
+            color: "#a1a1a6",
             marginTop: 18,
           }}
         >
@@ -59,7 +59,7 @@ export default function Image() {
             display: "flex",
             width: 140,
             height: 8,
-            background: "#ff6b35",
+            background: "#2997ff",
             borderRadius: 4,
             marginTop: 40,
           }}
@@ -68,7 +68,7 @@ export default function Image() {
           style={{
             display: "flex",
             fontSize: 26,
-            color: "#9ca3af",
+            color: "#a1a1a6",
             marginTop: 40,
           }}
         >

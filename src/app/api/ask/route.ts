@@ -28,9 +28,12 @@ FLAGSHIP PROJECTS
 
 - GridSense — carbon-aware EV charging optimizer: schedules home EV charging into off-peak, low-carbon hours with a linear-programming optimizer on real Spanish grid data. Stack: Python, PuLP, FastAPI, PostgreSQL, React, TypeScript, Docker. Live: https://gridsense-app-drab.vercel.app/
 - Smart Road Guardian AI X — explainable edge-AI road-safety platform for Indian roads: predicts crash risk with causal Bayesian networks, live risk scoring, helmet detection, near-miss black-spot detection and fleet monitoring. Stack: Python, PyTorch, ONNX, pgmpy, Next.js, Supabase. Live: https://trie-dashboard.vercel.app/
+- FBimpact — privacy-preserving pre-impact fall anticipation for elderly care: ST-GCN on skeletal pose predicts a fall before impact and names the joints that signalled it, with a faithfulness test. PyTorch, TensorFlow.js, FastAPI, Next.js. github.com/adityaayushman/FBimpact
+- AI Placement Coach — placement-readiness platform: calibrated readiness predictor, resume/skill-gap analyser, mock interviews (speech + camera signals), Bayesian Knowledge Tracing recommendations. Live: https://ai-placement-coach-murex.vercel.app/
+- Wastec website & plant-monitoring SaaS — multi-tenant Supabase backend with row-level security, SQL alert engine, device ingestion, billing, Claude assistant. Live: https://westec-phi.vercel.app/
 
 OTHER PROJECTS
-- CrowdCount — real-time multi-zone crowd analytics using YOLOv8, dual-pipeline, heatmaps, FastAPI.
+- Copper Canyon Karts — 3D browser kart racer in three.js (Grand Prix vs AI, time trial ghost, split screen).- CrowdCount — real-time multi-zone crowd analytics using YOLOv8, dual-pipeline, heatmaps, FastAPI.
 - Clear Pixel — grayscale image enhancement/filtering from scratch (Gaussian blur, Sobel, Laplacian) with OpenCV/NumPy.
 
 RESEARCH

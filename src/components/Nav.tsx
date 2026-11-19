@@ -95,17 +95,17 @@ export default function Nav() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         solid
-          ? "bg-[#0d0d0d]/70 backdrop-blur-xl border-b border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
+          ? "bg-[#161617]/80 backdrop-blur-xl border-b border-white/10"
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-12 h-16">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-12 h-12">
         <a
           href="#top"
           onClick={() => setMenuOpen(false)}
-          className="text-lg font-black tracking-tight text-white hover:text-[#ff6b35] transition-colors"
+          className="text-base font-semibold tracking-tight text-white hover:text-[#2997ff] transition-colors"
         >
-          Aditya<span className="text-[#ff6b35]">.</span>
+          Aditya<span className="text-[#2997ff]">.</span>
         </a>
 
         {/* Desktop links */}
@@ -114,10 +114,10 @@ export default function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className={`text-sm font-medium transition-colors ${
+              className={`text-xs font-normal transition-colors ${
                 active === l.href.slice(1)
-                  ? "text-[#ff6b35]"
-                  : "text-gray-300 hover:text-[#ff6b35]"
+                  ? "text-[#2997ff]"
+                  : "text-[#d2d2d7] hover:text-[#2997ff]"
               }`}
             >
               {l.label}
@@ -127,16 +127,16 @@ export default function Nav() {
 
         {/* Desktop socials + resume */}
         <div className="hidden md:flex items-center gap-4">
-          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-gray-300 hover:text-[#ff6b35] transition-colors">
+          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-[#d2d2d7] hover:text-[#2997ff] transition-colors">
             <GithubIcon />
           </a>
-          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-gray-300 hover:text-[#ff6b35] transition-colors">
+          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[#d2d2d7] hover:text-[#2997ff] transition-colors">
             <LinkedinIcon />
           </a>
-          <a href={LEETCODE_URL} target="_blank" rel="noopener noreferrer" aria-label="LeetCode" className="text-gray-300 hover:text-[#ff6b35] transition-colors">
+          <a href={LEETCODE_URL} target="_blank" rel="noopener noreferrer" aria-label="LeetCode" className="text-[#d2d2d7] hover:text-[#2997ff] transition-colors">
             <LeetcodeIcon />
           </a>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#ff6b35] text-white text-sm font-bold hover:bg-[#ff8555] transition-colors">
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0071e3] text-white text-xs font-medium hover:bg-[#0077ed] transition-colors">
             <FileText size={16} />
             <span>Resume</span>
           </a>
@@ -148,7 +148,7 @@ export default function Nav() {
           onClick={() => setMenuOpen((v) => !v)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
-          className="md:hidden text-white hover:text-[#ff6b35] transition-colors"
+          className="md:hidden text-white hover:text-[#2997ff] transition-colors"
         >
           <MenuIcon open={menuOpen} />
         </button>
@@ -156,7 +156,7 @@ export default function Nav() {
 
       {/* Mobile menu panel */}
       {menuOpen && (
-        <div className="md:hidden bg-[#0d0d0d]/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 flex flex-col gap-5">
+        <div className="md:hidden bg-[#000000]/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 flex flex-col gap-5">
           <div className="flex flex-col gap-4">
             {LINKS.map((l) => (
               <a
@@ -165,8 +165,8 @@ export default function Nav() {
                 onClick={() => setMenuOpen(false)}
                 className={`text-base font-medium transition-colors ${
                   active === l.href.slice(1)
-                    ? "text-[#ff6b35]"
-                    : "text-gray-200 hover:text-[#ff6b35]"
+                    ? "text-[#2997ff]"
+                    : "text-[#e8e8ed] hover:text-[#2997ff]"
                 }`}
               >
                 {l.label}
@@ -175,13 +175,13 @@ export default function Nav() {
           </div>
 
           <div className="flex items-center gap-6 pt-4 border-t border-white/10">
-            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-gray-300 hover:text-[#ff6b35] transition-colors">
+            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-[#d2d2d7] hover:text-[#2997ff] transition-colors">
               <GithubIcon />
             </a>
-            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-gray-300 hover:text-[#ff6b35] transition-colors">
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[#d2d2d7] hover:text-[#2997ff] transition-colors">
               <LinkedinIcon />
             </a>
-            <a href={LEETCODE_URL} target="_blank" rel="noopener noreferrer" aria-label="LeetCode" className="text-gray-300 hover:text-[#ff6b35] transition-colors">
+            <a href={LEETCODE_URL} target="_blank" rel="noopener noreferrer" aria-label="LeetCode" className="text-[#d2d2d7] hover:text-[#2997ff] transition-colors">
               <LeetcodeIcon />
             </a>
             <a
@@ -189,7 +189,7 @@ export default function Nav() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
-              className="ml-auto flex items-center gap-2 px-4 py-2 rounded-full bg-[#ff6b35] text-white text-sm font-bold hover:bg-[#ff8555] transition-colors"
+              className="ml-auto flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0071e3] text-white text-xs font-medium hover:bg-[#0077ed] transition-colors"
             >
               <FileText size={16} />
               <span>Resume</span>

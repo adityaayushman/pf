@@ -43,7 +43,7 @@ const projects: Project[] = [
     description:
       "Schedules home EV charging into off-peak, low-carbon hours using a linear-programming optimizer on real Spanish grid data, reducing grid strain and emissions. Full-stack dashboard with FastAPI, PostgreSQL and React.",
     tech: ["Python", "PuLP", "FastAPI", "PostgreSQL", "React", "TypeScript", "Docker"],
-    repo: GITHUB_URL,
+    repo: "https://github.com/adityaayushman/GRIDSENSE",
     live: "https://gridsense-app-drab.vercel.app/",
     theme: "energy",
   },
@@ -62,15 +62,17 @@ const projects: Project[] = [
     description:
       "Explainable road-safety platform for Indian roads that predicts crash risk with causal Bayesian networks, with live risk scoring, helmet detection, near-miss black-spot detection and fleet monitoring.",
     tech: ["Python", "PyTorch", "ONNX", "pgmpy", "Next.js", "Supabase"],
-    repo: GITHUB_URL,
+    repo: "https://github.com/adityaayushman/TRIE",
     live: "https://trie-dashboard.vercel.app/",
     theme: "detection",
   },
   {
     title: "Cloud Computing Resource Optimizer",
     description:
-      "Multi-cloud resource optimizer that forecasts CPU and memory demand with XGBoost and Random Forest, then schedules allocation through a Deep Q-Network. Explainable AI keeps every decision transparent and interpretable. SSRN Preprint (2026).",
-    tech: ["Python", "XGBoost", "Reinforcement Learning", "DQN"],
+      "Multi-cloud resource optimizer that forecasts CPU and memory demand with XGBoost, then sets capacity across AWS, Azure and GCP with a Deep Q-Network, with Isolation Forest anomaly detection and SHAP explaining every decision. SSRN Preprint (2026).",
+    tech: ["Python", "XGBoost", "Deep Q-Network", "SHAP", "FastAPI", "React"],
+    repo: "https://github.com/adityaayushman/Cloud-Resource-Optimizer",
+    live: "https://cloudresourceoptimizer.vercel.app/",
     paper: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6957438",
     theme: "cloud",
     featured: true,
@@ -90,9 +92,44 @@ const projects: Project[] = [
     tech: ["Python", "OpenCV", "NumPy", "Matplotlib"],
     theme: "pixels",
   },
+  {
+    title: "FBimpact — Pre-Impact Fall Anticipation",
+    description:
+      "Privacy-preserving fall anticipation for elderly care: an ST-GCN on skeletal pose predicts a fall before impact and names the joints that signalled it, with a test checking that the explanation is faithful. Live API plus in-browser inference.",
+    tech: ["PyTorch", "ST-GCN", "TensorFlow.js", "FastAPI", "Next.js"],
+    repo: "https://github.com/adityaayushman/FBimpact",
+    live: "https://fbimpact-api.onrender.com/docs",
+    theme: "scan",
+  },
+  {
+    title: "AI Placement Coach",
+    description:
+      "Platform that scores an engineering student's placement readiness and keeps guidance up to date: calibrated readiness predictor, resume and skill-gap analyser, mock interviews with speech and camera signals, and Bayesian Knowledge Tracing recommendations.",
+    tech: ["Python", "scikit-learn", "NLP", "FastAPI", "React"],
+    repo: "https://github.com/adityaayushman/AI-Placement-Coach",
+    live: "https://ai-placement-coach-murex.vercel.app/",
+    theme: "cloud",
+  },
+  {
+    title: "Wastec — Website & Plant-Monitoring SaaS",
+    description:
+      "Multi-tenant SaaS and marketing site for a bio-gas company: live plant dashboards, a SQL alert engine, device ingestion, service tickets, billing and a Claude-powered assistant on Supabase with row-level security (24 schema tests).",
+    tech: ["Supabase", "PostgreSQL", "JavaScript", "Razorpay", "Claude API"],
+    repo: "https://github.com/adityaayushman/WESTEC",
+    live: "https://westec-phi.vercel.app/",
+    theme: "energy",
+  },
+  {
+    title: "Copper Canyon Karts — Browser 3D Racer",
+    description:
+      "3D kart racer in three.js: Grand Prix against five AI rivals with items, time trial with ghost lap, two-player split screen and two circuits, wrapped in a poster-style homepage.",
+    tech: ["three.js", "JavaScript", "HTML/CSS"],
+    repo: "https://github.com/adityaayushman/kart-attack",
+    theme: "pixels",
+  },
 ];
 
-const O = "#ff6b35";
+const O = "#2997ff";
 
 function renderTheme(theme: ProjectTheme) {
   switch (theme) {
@@ -211,7 +248,7 @@ function renderTheme(theme: ProjectTheme) {
 
 function ProjectVisual({ theme }: { theme: ProjectTheme }) {
   return (
-    <div className="relative -mx-8 -mt-8 mb-6 h-32 overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#ff6b35]/12 via-white/2 to-transparent">
+    <div className="relative -mx-8 -mt-8 mb-6 h-32 overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#2997ff]/12 via-white/2 to-transparent">
       <svg
         viewBox="0 0 320 120"
         preserveAspectRatio="xMidYMid slice"
@@ -226,7 +263,7 @@ function ProjectVisual({ theme }: { theme: ProjectTheme }) {
 
 export default function FeaturedProjects() {
   return (
-    <section id="projects" className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
+    <section id="projects" className="py-28 md:py-44 px-6 md:px-12 max-w-7xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -234,8 +271,7 @@ export default function FeaturedProjects() {
         transition={{ duration: 0.8 }}
         className="mb-16"
       >
-        <h2 className="text-4xl md:text-5xl font-black mb-4">Featured Work</h2>
-        <div className="h-1 w-20 bg-[#ff6b35] rounded-full"></div>
+        <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-4">Featured Work</h2>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -246,10 +282,10 @@ export default function FeaturedProjects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: (idx % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative flex flex-col overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:-translate-y-1.5 hover:bg-white/8 hover:border-white/25 hover:shadow-[0_24px_50px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out"
+            className="group relative flex flex-col overflow-hidden bg-[#1d1d1f] rounded-[28px] p-8 hover:-translate-y-1.5 hover:bg-[#2a2a2d]  hover: transition-all duration-500 ease-out"
           >
             {project.featured && (
-              <span className="absolute top-4 right-4 z-10 rounded-full bg-[#ff6b35] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg">
+              <span className="absolute top-4 right-4 z-10 rounded-full bg-[#0071e3] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg">
                 Flagship
               </span>
             )}
@@ -257,7 +293,7 @@ export default function FeaturedProjects() {
             <ProjectVisual theme={project.theme} />
 
             <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
-            <p className="text-gray-400 mb-6 flex-grow leading-relaxed">
+            <p className="text-[#a1a1a6] mb-6 flex-grow leading-relaxed">
               {project.description}
             </p>
 
@@ -265,7 +301,7 @@ export default function FeaturedProjects() {
               {project.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300 font-medium tracking-wide"
+                  className="px-3 py-1 bg-white/10 rounded-full text-xs text-[#d2d2d7] font-medium tracking-wide"
                 >
                   {tech}
                 </span>
@@ -278,7 +314,7 @@ export default function FeaturedProjects() {
                   href={project.repo ?? GITHUB_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#ff6b35] transition-colors"
+                  className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#2997ff] transition-colors"
                 >
                   <GitBranch size={18} />
                   <span>GitHub</span>
@@ -289,7 +325,7 @@ export default function FeaturedProjects() {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#ff6b35] transition-colors"
+                  className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#2997ff] transition-colors"
                 >
                   <span>Live Demo ↗</span>
                 </a>
@@ -299,7 +335,7 @@ export default function FeaturedProjects() {
                   href={project.paper}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#ff6b35] transition-colors"
+                  className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#2997ff] transition-colors"
                 >
                   <span>SSRN Preprint ↗</span>
                 </a>

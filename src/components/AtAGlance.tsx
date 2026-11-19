@@ -11,7 +11,7 @@ const CURRENT_ROLES = [
 ];
 
 const linkClass =
-  "inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 text-sm font-semibold text-white hover:bg-white/10 hover:border-white/30 transition-colors";
+  "inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 text-sm font-semibold text-white hover:bg-white/10  transition-colors";
 
 export default function AtAGlance() {
   return (
@@ -21,27 +21,27 @@ export default function AtAGlance() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
+        className="bg-[#1d1d1f] rounded-3xl p-6 md:p-10"
       >
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
           <div className="flex flex-col gap-4 max-w-2xl">
-            <span className="text-[#ff6b35] font-semibold tracking-widest uppercase text-xs">
+            <span className="text-[#2997ff] font-semibold tracking-widest uppercase text-xs">
               At a glance
             </span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
               AI &amp; Machine Learning Engineer
             </h2>
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-[#d2d2d7] leading-relaxed">
               Computer vision, deep learning and cloud AI. I build end-to-end systems, from model to
               API to dashboard, with 5 internships and an SSRN preprint behind them.
             </p>
-            <ul className="flex flex-col gap-2 text-gray-400 text-sm">
+            <ul className="flex flex-col gap-2 text-[#a1a1a6] text-sm">
               <li className="flex items-center gap-2">
-                <GraduationCap size={16} className="text-[#ff6b35] shrink-0" />
+                <GraduationCap size={16} className="text-[#2997ff] shrink-0" />
                 B.Tech CSE (AI &amp; ML), SRM Institute of Science and Technology, Class of 2027
               </li>
               <li className="flex items-center gap-2">
-                <MapPin size={16} className="text-[#ff6b35] shrink-0" />
+                <MapPin size={16} className="text-[#2997ff] shrink-0" />
                 Chennai, India
               </li>
             </ul>
@@ -50,7 +50,7 @@ export default function AtAGlance() {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#ff6b35] text-sm font-bold text-white hover:bg-[#ff8555] transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0071e3] text-sm font-bold text-white hover:bg-[#0077ed] transition-colors"
               >
                 <FileText size={16} />
                 View Resume
@@ -79,7 +79,7 @@ export default function AtAGlance() {
           </div>
 
           <div className="lg:w-[380px] shrink-0">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-[#86868b] mb-3">
               Currently
             </h3>
             <ul className="flex flex-col gap-3">
@@ -89,7 +89,7 @@ export default function AtAGlance() {
                   className="rounded-xl border border-white/10 bg-white/5 px-4 py-3"
                 >
                   <span className="block text-white font-semibold">{r.role}</span>
-                  <span className="block text-gray-400 text-sm">{r.org}</span>
+                  <span className="block text-[#a1a1a6] text-sm">{r.org}</span>
                 </li>
               ))}
             </ul>

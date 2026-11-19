@@ -46,7 +46,7 @@ const stack = [
 
 export default function TechStack() {
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
+    <section className="py-28 md:py-44 px-6 md:px-12 max-w-7xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -54,9 +54,8 @@ export default function TechStack() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="mb-16"
       >
-        <h2 className="text-4xl md:text-5xl font-black mb-4">Technical Arsenal</h2>
-        <div className="h-1 w-20 bg-[#ff6b35] rounded-full"></div>
-        <p className="text-gray-400 mt-6 max-w-xl leading-relaxed">
+        <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-4">Technical Arsenal</h2>
+        <p className="text-[#a1a1a6] mt-6 max-w-xl leading-relaxed">
           The tools and frameworks I reach for to build intelligent, real-time systems.
         </p>
       </motion.div>
@@ -69,14 +68,14 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-7 shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:-translate-y-1 hover:border-white/25 hover:shadow-[0_20px_45px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out"
+            className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-[#1d1d1f] p-7 hover:-translate-y-1  hover: transition-all duration-500 ease-out"
           >
             {/* Accent glow that reveals on hover */}
-            <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[#ff6b35]/15 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[#0071e3]/15 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="relative z-10">
               <div className="mb-6 flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#ff6b35]/10 text-[#ff6b35] group-hover:bg-[#ff6b35] group-hover:text-white transition-colors duration-500">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#0071e3]/10 text-[#2997ff] group-hover:bg-[#0071e3] group-hover:text-white transition-colors duration-500">
                   {group.icon}
                 </div>
                 <h3 className="text-lg font-bold text-white tracking-tight">
@@ -91,7 +90,7 @@ export default function TechStack() {
                 {group.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-sm font-medium text-gray-300 transition-colors duration-300 hover:border-[#ff6b35]/40 hover:bg-[#ff6b35]/10 hover:text-white"
+                    className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-sm font-medium text-[#d2d2d7] transition-colors duration-300 hover:border-[#2997ff]/40 hover:bg-[#0071e3]/10 hover:text-white"
                   >
                     {item}
                   </span>
