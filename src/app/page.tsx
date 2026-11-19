@@ -6,6 +6,7 @@ import Nav from "@/components/Nav";
 import ScrollProgress from "@/components/ScrollProgress";
 import AskMeAI from "@/components/AskMeAI";
 import AutoScroll from "@/components/AutoScroll";
+import NeuralBackground from "@/components/NeuralBackground";
 import ScrollyCanvas from "@/components/ScrollyCanvas";
 import Overlay from "@/components/Overlay";
 import TagScroll from "@/components/TagScroll";
@@ -32,6 +33,7 @@ export default function Home() {
       >
         Skip to content
       </a>
+      <NeuralBackground />
       <AutoScroll />
       <ScrollProgress />
       <Nav />
