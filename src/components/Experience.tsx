@@ -79,7 +79,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto"
+      className="py-28 md:py-44 px-6 md:px-12 max-w-7xl mx-auto"
     >
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -88,8 +88,7 @@ export default function Experience() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="mb-16"
       >
-        <h2 className="text-4xl md:text-5xl font-black mb-4">Experience</h2>
-        <div className="h-1 w-20 bg-[#ff6b35] rounded-full"></div>
+        <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-4">Experience</h2>
       </motion.div>
 
       <div className="flex flex-col gap-6">
@@ -100,7 +99,7 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:bg-white/8 hover:border-white/25 transition-all duration-500 ease-out"
+            className="bg-[#1d1d1f] rounded-[28px] p-6 md:p-8 hover:bg-[#2a2a2d]  transition-all duration-500 ease-out"
           >
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
               <div>
@@ -108,26 +107,26 @@ export default function Experience() {
                   {exp.company}
                 </h3>
                 <div className="flex flex-wrap items-center gap-2 mt-1">
-                  <span className="text-[#ff6b35] font-semibold">{exp.role}</span>
+                  <span className="text-[#2997ff] font-semibold">{exp.role}</span>
                   <span className="text-gray-600">·</span>
-                  <span className="text-gray-500 text-sm font-medium">{exp.tag}</span>
+                  <span className="text-[#86868b] text-sm font-medium">{exp.tag}</span>
                   {exp.period.endsWith("Present") && (
-                    <span className="ml-1 rounded-full border border-[#ff6b35]/40 bg-[#ff6b35]/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#ff6b35]">
+                    <span className="ml-1 rounded-full border border-[#2997ff]/40 bg-[#0071e3]/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#2997ff]">
                       Current
                     </span>
                   )}
                 </div>
               </div>
               <div className="text-left md:text-right shrink-0">
-                <span className="block text-gray-300 font-medium">{exp.period}</span>
-                <span className="block text-gray-500 text-sm">{exp.location}</span>
+                <span className="block text-[#d2d2d7] font-medium">{exp.period}</span>
+                <span className="block text-[#86868b] text-sm">{exp.location}</span>
               </div>
             </div>
 
             <ul className="mt-5 flex flex-col gap-2.5">
               {exp.points.map((point) => (
-                <li key={point} className="flex gap-3 text-gray-400 leading-relaxed">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff6b35]"></span>
+                <li key={point} className="flex gap-3 text-[#a1a1a6] leading-relaxed">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0071e3]"></span>
                   <span>{point}</span>
                 </li>
               ))}
@@ -137,7 +136,7 @@ export default function Experience() {
               {exp.tech.map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-xs text-gray-300 font-medium tracking-wide"
+                  className="px-3 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-xs text-[#d2d2d7] font-medium tracking-wide"
                 >
                   {t}
                 </span>

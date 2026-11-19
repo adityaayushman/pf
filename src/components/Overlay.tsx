@@ -36,7 +36,7 @@ export default function Overlay({
         className="absolute w-full text-center will-change-[opacity,transform]"
       >
         <h1
-          className="font-black tracking-tighter"
+          className="font-semibold tracking-tighter"
           style={{ fontSize: "clamp(5rem, 15vw, 14rem)" }}
         >
           Aditya Ayushman Sahoo.
@@ -48,7 +48,7 @@ export default function Overlay({
         style={{ opacity: opacity2, y: y2 }}
         className="absolute w-full text-center flex flex-col items-center gap-4 will-change-[opacity,transform]"
       >
-        <span className="text-[#ff6b35] font-semibold tracking-widest uppercase text-sm md:text-base">
+        <span className="text-[#2997ff] font-semibold tracking-widest uppercase text-sm md:text-base">
           AI • Computer Vision • Cloud
         </span>
         <h2
@@ -57,7 +57,7 @@ export default function Overlay({
         >
           Aditya Ayushman Sahoo.
         </h2>
-        <span className="text-[#9ca3af] text-lg md:text-xl font-medium tracking-wide">
+        <span className="text-[#a1a1a6] text-lg md:text-xl font-medium tracking-wide">
           B.Tech CSE (AI & ML), SRM Institute of Science and Technology, Class of 2027
         </span>
       </motion.div>
@@ -89,7 +89,7 @@ export default function Overlay({
           Computer Vision & Cloud<br />
           Intelligence Systems.
         </h2>
-        <span className="text-[#9ca3af] text-base md:text-xl tracking-wider font-medium">
+        <span className="text-[#a1a1a6] text-base md:text-xl tracking-wider font-medium">
           Deep Learning • YOLOv8 • Reinforcement Learning • FastAPI
         </span>
       </motion.div>

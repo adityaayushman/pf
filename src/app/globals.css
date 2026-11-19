@@ -9,13 +9,15 @@ section[id] {
 }
 
 body {
-  background: #0d0d0d;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", var(--font-inter), "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: -0.011em;
+  background: #000000;
   color: white;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: #ff6b35;
+  background: #2997ff;
   color: white;
 }
 
@@ -40,7 +42,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid #ff6b35;
+  outline: 2px solid #2997ff;
   outline-offset: 3px;
 }
 
@@ -51,4 +53,9 @@ body {
   .animate-scroll-right {
     animation: scrollRight 40s linear infinite;
   }
+}
+
+h1, h2, h3 {
+  letter-spacing: -0.03em;
+  line-height: 1.07;
 }

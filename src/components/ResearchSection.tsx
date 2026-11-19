@@ -20,11 +20,11 @@ const researches: Research[] = [
 ];
 
 const cardClass =
-  "group flex items-center justify-between p-6 md:p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:border-white/25 hover:bg-white/8 hover:-translate-y-0.5 transition-all duration-500 ease-out";
+  "group flex items-center justify-between p-6 md:p-8 bg-[#1d1d1f] rounded-[28px] border border-white/10  hover:bg-[#2a2a2d] hover:-translate-y-0.5 transition-all duration-500 ease-out";
 
 export default function ResearchSection() {
   return (
-    <section id="research" className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5">
+    <section id="research" className="py-28 md:py-44 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/5">
       <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-start">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -33,9 +33,8 @@ export default function ResearchSection() {
           transition={{ duration: 0.8 }}
           className="w-full md:w-1/3"
         >
-          <h2 className="text-4xl md:text-5xl font-black mb-4">Research & Papers</h2>
-          <div className="h-1 w-20 bg-[#ff6b35] rounded-full mb-6"></div>
-          <p className="text-gray-400 text-lg leading-relaxed">
+          <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-4">Research & Papers</h2>
+          <p className="text-[#a1a1a6] text-lg leading-relaxed">
             Exploring the frontiers of technology through rigorous academic research and practical implementation.
           </p>
         </motion.div>
@@ -52,14 +51,14 @@ export default function ResearchSection() {
             const inner = (
               <>
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#ff6b35] transition-colors">
+                  <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#2997ff] transition-colors">
                     {item.title}
                   </h3>
-                  <span className="text-gray-500 font-medium tracking-wide">
+                  <span className="text-[#86868b] font-medium tracking-wide">
                     {item.tech}
                   </span>
                 </div>
-                <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm text-gray-400 group-hover:bg-[#ff6b35]/15 group-hover:text-[#ff6b35] transition-all duration-500">
+                <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm text-[#a1a1a6] group-hover:bg-[#0071e3]/15 group-hover:text-[#2997ff] transition-all duration-500">
                   {item.link ? <ExternalLink size={20} /> : <BookOpen size={20} />}
                 </div>
               </>

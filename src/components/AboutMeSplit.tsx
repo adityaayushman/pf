@@ -65,25 +65,25 @@ export default function AboutMeSplit() {
   }, []);
 
   return (
-    <section id="about" className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
+    <section id="about" className="py-28 md:py-44 px-6 md:px-12 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-16 items-center">
         {/* LEFT SIDE */}
         <div className="grid grid-cols-2 gap-10">
           <div className="flex flex-col gap-2">
             <Counter value={7} suffix="" />
-            <span className="text-gray-400 font-medium">Projects Built</span>
+            <span className="text-[#a1a1a6] font-medium">Projects Built</span>
           </div>
           <div className="flex flex-col gap-2">
             <Counter value={5} suffix="" />
-            <span className="text-gray-400 font-medium">Internships</span>
+            <span className="text-[#a1a1a6] font-medium">Internships</span>
           </div>
           <div className="flex flex-col gap-2">
             <Counter value={1} suffix="" />
-            <span className="text-gray-400 font-medium">Research Works</span>
+            <span className="text-[#a1a1a6] font-medium">Research Works</span>
           </div>
           <div className="flex flex-col gap-2">
             <Counter value={solved ?? 330} suffix={solved != null ? "" : "+"} />
-            <span className="text-gray-400 font-medium">DSA Problems Solved</span>
+            <span className="text-[#a1a1a6] font-medium">DSA Problems Solved</span>
           </div>
         </div>
 
@@ -93,7 +93,7 @@ export default function AboutMeSplit() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col gap-6 text-gray-300 text-lg leading-relaxed"
+          className="flex flex-col gap-6 text-[#d2d2d7] text-lg leading-relaxed"
         >
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">
             From Curious Developer to AI Innovator

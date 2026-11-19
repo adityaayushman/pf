@@ -147,11 +147,11 @@ export default function ScrollyCanvas({
   });
 
   return (
-    <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#0d0d0d]">
+    <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#000000]">
       {!firstReady && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#0d0d0d] z-10">
-          <div className="h-8 w-8 rounded-full border-2 border-white/15 border-t-[#ff6b35] animate-spin" />
-          <span className="text-[#9ca3af] text-xs font-semibold tracking-[0.3em] uppercase">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#000000] z-10">
+          <div className="h-8 w-8 rounded-full border-2 border-white/15 border-t-[#2997ff] animate-spin" />
+          <span className="text-[#a1a1a6] text-xs font-semibold tracking-[0.3em] uppercase">
             Loading
           </span>
         </div>

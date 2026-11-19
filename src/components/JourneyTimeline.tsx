@@ -38,7 +38,7 @@ const timelineItems = [
 
 export default function JourneyTimeline() {
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+    <section className="py-28 md:py-44 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -46,8 +46,7 @@ export default function JourneyTimeline() {
         transition={{ duration: 0.8 }}
         className="mb-24 text-center"
       >
-        <h2 className="text-4xl md:text-5xl font-black mb-4">The Journey</h2>
-        <div className="h-1 w-20 bg-[#ff6b35] rounded-full mx-auto"></div>
+        <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-4">The Journey</h2>
       </motion.div>
 
       <div className="relative">
@@ -66,7 +65,7 @@ export default function JourneyTimeline() {
                 }`}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-[20px] md:left-1/2 w-4 h-4 rounded-full bg-[#ff6b35] border-4 border-[#0d0d0d] -translate-x-1/2 mt-2 md:mt-0 z-10"></div>
+                <div className="absolute left-[20px] md:left-1/2 w-4 h-4 rounded-full bg-[#0071e3] border-4 border-[#000000] -translate-x-1/2 mt-2 md:mt-0 z-10"></div>
 
                 {/* Content */}
                 <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${isLeft ? "md:pr-12 md:text-right" : "md:pl-12 text-left"}`}>
@@ -75,11 +74,11 @@ export default function JourneyTimeline() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
-                    className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:bg-white/8 hover:border-white/25 transition-all duration-500 ease-out"
+                    className="bg-[#1d1d1f] p-6 rounded-[28px] hover:bg-[#2a2a2d]  transition-all duration-500 ease-out"
                   >
-                    <span className="text-[#ff6b35] font-bold text-lg mb-2 block">{item.year}</span>
+                    <span className="text-[#2997ff] font-bold text-lg mb-2 block">{item.year}</span>
                     <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                    <p className="text-gray-400 leading-relaxed">{item.description}</p>
+                    <p className="text-[#a1a1a6] leading-relaxed">{item.description}</p>
                   </motion.div>
                 </div>
               </div>

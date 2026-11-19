@@ -7,8 +7,6 @@ import { ArrowRight, Mail, Download } from "lucide-react";
 export default function ContactCTA() {
   return (
     <section id="contact" className="py-32 md:py-48 px-6 text-center relative overflow-hidden">
-      {/* Cinematic Background Glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#ff6b35]/10 rounded-full blur-[120px] pointer-events-none"></div>
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -18,7 +16,7 @@ export default function ContactCTA() {
         className="relative z-10 flex flex-col items-center gap-10"
       >
         <h2
-          className="font-black leading-tight tracking-tight text-white"
+          className="font-semibold leading-tight tracking-tight text-white"
           style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
         >
           Let&apos;s Build Something<br />
@@ -31,12 +29,12 @@ export default function ContactCTA() {
             <Mail size={20} />
           </a>
           
-          <a href="#projects" className="w-full sm:w-auto px-8 py-4 bg-white/5 backdrop-blur-md text-white border border-white/15 rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-white/10 hover:border-white/30 hover:scale-105 active:scale-95 transition-all duration-300">
+          <a href="#projects" className="w-full sm:w-auto px-8 py-4 bg-[#1d1d1f] text-white border border-white/15 rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-white/10  hover:scale-105 active:scale-95 transition-all duration-300">
             <span>View Projects</span>
             <ArrowRight size={20} />
           </a>
 
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-8 py-4 bg-[#ff6b35] text-white rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-[#ff8555] hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,107,53,0.3)] hover:shadow-[0_0_30px_rgba(255,107,53,0.5)]">
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-8 py-4 bg-[#0071e3] text-white rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-[#0077ed] hover:scale-105 active:scale-95 transition-all hover:">
             <span>View Resume</span>
             <Download size={20} />
           </a>

@@ -126,7 +126,7 @@ export default function AskMeAI() {
         initial={{ opacity: 0, scale: 0.6 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.6, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#ff6b35] text-white shadow-[0_10px_30px_rgba(255,107,53,0.45)] hover:bg-[#ff8555] hover:scale-105 active:scale-95 transition-all"
+        className="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#0071e3] text-white hover:bg-[#0077ed] hover:scale-105 active:scale-95 transition-all"
       >
         {open ? <CloseIcon /> : <SparkIcon />}
       </motion.button>
@@ -138,16 +138,16 @@ export default function AskMeAI() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed bottom-24 right-4 z-40 flex h-[min(34rem,calc(100vh-8rem))] w-[min(24rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0d0d0d]/80 backdrop-blur-2xl shadow-[0_24px_60px_rgba(0,0,0,0.6)]"
+            className="fixed bottom-24 right-4 z-40 flex h-[min(34rem,calc(100vh-8rem))] w-[min(24rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-[28px] border border-white/10 bg-[#000000]/80 backdrop-blur-2xl"
           >
             {/* Header */}
             <div className="flex items-center gap-3 border-b border-white/10 px-5 py-4">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#ff6b35]/15 text-[#ff6b35]">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0071e3]/15 text-[#2997ff]">
                 <SparkIcon size={18} />
               </div>
               <div className="leading-tight">
                 <p className="text-sm font-bold text-white">Ask me about Aditya</p>
-                <p className="text-xs text-gray-500">AI assistant · answers from his profile</p>
+                <p className="text-xs text-[#86868b]">AI assistant · answers from his profile</p>
               </div>
             </div>
 
@@ -155,7 +155,7 @@ export default function AskMeAI() {
             <div ref={scrollRef} className="flex-1 space-y-4 overflow-y-auto px-5 py-5">
               {messages.length === 0 && (
                 <div className="flex flex-col gap-4">
-                  <p className="text-sm leading-relaxed text-gray-400">
+                  <p className="text-sm leading-relaxed text-[#a1a1a6]">
                     Hi! I&apos;m Aditya&apos;s AI assistant. Ask me about his projects,
                     skills, experience, or whether he&apos;s a fit for a role.
                   </p>
@@ -165,7 +165,7 @@ export default function AskMeAI() {
                         key={s}
                         type="button"
                         onClick={() => send(s)}
-                        className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-left text-sm text-gray-300 transition-colors hover:border-[#ff6b35]/40 hover:bg-[#ff6b35]/10 hover:text-white"
+                        className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-left text-sm text-[#d2d2d7] transition-colors hover:border-[#2997ff]/40 hover:bg-[#0071e3]/10 hover:text-white"
                       >
                         {s}
                       </button>
@@ -180,10 +180,10 @@ export default function AskMeAI() {
                   className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                    className={`max-w-[85%] whitespace-pre-wrap rounded-[28px] px-4 py-2.5 text-sm leading-relaxed ${
                       m.role === "user"
-                        ? "bg-[#ff6b35] text-white"
-                        : "border border-white/10 bg-white/5 text-gray-200"
+                        ? "bg-[#0071e3] text-white"
+                        : "border border-white/10 bg-white/5 text-[#e8e8ed]"
                     }`}
                   >
                     {m.content ||
@@ -213,13 +213,13 @@ export default function AskMeAI() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask about Aditya…"
-                className="flex-1 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-gray-500 outline-none focus:border-[#ff6b35]/40"
+                className="flex-1 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-gray-500 outline-none focus:border-[#2997ff]/40"
               />
               <button
                 type="submit"
                 disabled={loading || !input.trim()}
                 aria-label="Send"
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#ff6b35] text-white transition-all hover:bg-[#ff8555] active:scale-95 disabled:opacity-40"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0071e3] text-white transition-all hover:bg-[#0077ed] active:scale-95 disabled:opacity-40"
               >
                 <SendIcon />
               </button>

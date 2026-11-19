@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const jakarta = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -69,8 +70,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${jakarta.className} antialiased`}>
-      <body className="min-h-screen flex flex-col bg-[#0d0d0d] text-white overflow-x-hidden">
+    <html lang="en" className={`${inter.variable} antialiased`}>
+      <body className="min-h-screen flex flex-col bg-[#000000] text-white overflow-x-hidden">
         {/* Preload the first hero frame so it can paint immediately */}
         <link
           rel="preload"
@@ -78,14 +79,6 @@ export default function RootLayout({
           href="/sequence/frame_000_delay-0.066s.webp"
           fetchPriority="high"
         />
-        {/* Ambient glow layer — gives the frosted-glass panels something to refract */}
-        <div
-          aria-hidden
-          className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
-        >
-          <div className="absolute -top-32 left-[8%] h-[45vw] w-[45vw] rounded-full bg-[#ff6b35]/10 blur-[140px]" />
-          <div className="absolute bottom-[4%] right-[6%] h-[42vw] w-[42vw] rounded-full bg-[#4f7cff]/10 blur-[150px]" />
-        </div>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

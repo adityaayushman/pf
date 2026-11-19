@@ -66,6 +66,26 @@ const INTENTS: Intent[] = [
       "CrowdCount is a real-time, multi-zone crowd-analytics platform using YOLOv8 — live dashboards plus offline batch analytics, with centroid tracking, heatmaps and line-crossing detection over a FastAPI backend.",
   },
   {
+    keywords: ["fbimpact", "fall", "elderly", "st-gcn", "pose"],
+    answer:
+      "FBimpact is a privacy-preserving fall-anticipation system for elderly care: an ST-GCN on skeletal pose predicts a fall before impact and names the joints that signalled it, with a test that the explanation is faithful. Built with PyTorch, TensorFlow.js, FastAPI and Next.js.",
+  },
+  {
+    keywords: ["placement coach", "placement", "readiness", "resume", "interview"],
+    answer:
+      "AI Placement Coach scores a student's placement readiness and gives continuously updated guidance: a calibrated readiness predictor, resume and skill-gap analyser, mock interviews with speech and camera signals, and Bayesian Knowledge Tracing recommendations. Live demo: https://ai-placement-coach-murex.vercel.app/",
+  },
+  {
+    keywords: ["wastec", "westec", "biogas", "bio-gas", "saas", "plant monitoring"],
+    answer:
+      "The Wastec project is a multi-tenant website and plant-monitoring SaaS on Supabase: live dashboards, a SQL alert engine, device ingestion, service tickets, billing and a Claude-powered assistant. Live: https://westec-phi.vercel.app/",
+  },
+  {
+    keywords: ["kart", "racer", "racing", "three.js", "game"],
+    answer:
+      "Copper Canyon Karts is a 3D browser kart racer built with three.js: Grand Prix against AI rivals, time trial with ghost lap, and two-player split screen.",
+  },
+  {
     keywords: ["project", "built", "portfolio", "made", "showcase", "worked on"],
     answer:
       "Aditya's flagship projects are:\n• PCBMind AI — AI PCB defect-inspection SaaS (PyTorch, YOLOv8, FastAPI, React)\n• MedVision — AI medical imaging for clinical decision support\n• Cloud Computing Resource Optimizer — ML + reinforcement learning, SSRN preprint (2026)\n• GridSense — carbon-aware EV charging optimizer (linear programming, FastAPI, React)\n• Smart Road Guardian AI X — edge-AI road safety with causal Bayesian networks\nHe's also built CrowdCount (YOLOv8 crowd analytics), and Clear Pixel. Ask me about any of them!",
