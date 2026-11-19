@@ -16,7 +16,12 @@ export default function ScrollyCanvas({
   heroRef: React.RefObject<HTMLDivElement | null>;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [images, setImages] = useState<HTMLImageElement[]>([]);
+  // Created once on the client (empty during SSR); never rendered, so no hydration mismatch.
+  const [images] = useState<HTMLImageElement[]>(() =>
+    typeof Image === "undefined"
+      ? []
+      : Array.from({ length: FRAME_COUNT }, () => new Image())
+  );
   const [firstReady, setFirstReady] = useState(false);
   const [loadedCount, setLoadedCount] = useState(0);
 
@@ -30,8 +35,7 @@ export default function ScrollyCanvas({
   // Frame 0 is also <link rel=preload>ed in the document head, so it's
   // usually already in cache by the time this runs.
   useEffect(() => {
-    const imgs = Array.from({ length: FRAME_COUNT }, () => new Image());
-    setImages(imgs);
+    const imgs = images;
 
     let next = 0;
     let active = 0;
@@ -60,7 +64,7 @@ export default function ScrollyCanvas({
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [images]);
 
   const isLoaded = (img?: HTMLImageElement) =>
     !!img && img.complete && img.naturalWidth > 0;

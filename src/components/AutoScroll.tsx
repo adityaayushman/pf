@@ -16,7 +16,6 @@ export default function AutoScroll() {
 
     let cancelled = false;
     let raf = 0;
-    let timer: ReturnType<typeof setTimeout>;
 
     const onUserIntent = () => cancel();
 
@@ -71,7 +70,7 @@ export default function AutoScroll() {
       raf = requestAnimationFrame(step);
     };
 
-    timer = setTimeout(startAutoScroll, 5000);
+    const timer = setTimeout(startAutoScroll, 5000);
 
     return cancel;
   }, []);
