@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
+Personal portfolio of Aditya Ayushman Sahoo: an AI/ML engineer's showcase of projects, experience and research, with an "Ask me" assistant.
 
-First, run the development server:
+**Live site:** https://pf-eight-xi.vercel.app
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+- **Scroll-driven hero** with a canvas sequence and animated neural-network background.
+- **Sections** for featured projects, experience, achievements, research, journey timeline, tech stack and contact.
+- **Ask-me assistant** that answers questions about the portfolio owner. It uses the Anthropic API when a key is set, and falls back to a built-in keyword responder (no key, no cost) when it is not.
+- **Live stats**: GitHub repo count and LeetCode stats, fetched server-side and cached for one hour, with graceful fallback.
+- **Case study page** for the Road Guardian project at `/work/road-guardian`.
+- **SEO**: generated sitemap, `robots.txt` and Open Graph images.
+
+## Tech stack
+
+| Area | Tools |
+|---|---|
+| Framework | Next.js (App Router), React, TypeScript |
+| Styling and motion | Tailwind CSS 4, Framer Motion |
+| AI | Anthropic SDK (`@anthropic-ai/sdk`) |
+| Hosting | Vercel |
+
+## Project structure
+
+```
+src/app/            routes, API routes (/api/ask, /api/stats), sitemap, OG images
+src/components/     page sections and UI components
+src/lib/            keyless assistant responder
+public/             images, project media, resume
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Getting started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Requires Node.js 20 or later.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev      # http://localhost:3000
+```
 
-## Learn More
+Other scripts:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build    # production build
+npm run start    # serve the production build
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Variable | Required | Purpose |
+|---|---|---|
+| `ANTHROPIC_API_KEY` | No | Enables the LLM-backed Ask-me assistant. Without it, the site uses the built-in responder |
 
-## Deploy on Vercel
+Create a `.env.local` file in the project root to set it. Never commit it.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy to Vercel by importing the repository. Add `ANTHROPIC_API_KEY` under the project's environment variables if you want the LLM assistant.
+
+## Contact
+
+Reach out via [LinkedIn](https://www.linkedin.com/in/aditya-ayushman-sahoo-243b81287/) or the contact section of the live site.
