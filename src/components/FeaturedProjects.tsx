@@ -149,6 +149,8 @@ const projects: Project[] = [
       "3D kart racer in three.js: Grand Prix against five AI rivals with items, time trial with ghost lap, two-player split screen and two circuits, wrapped in a poster-style homepage.",
     tech: ["three.js", "JavaScript", "HTML/CSS"],
     repo: "https://github.com/adityaayushman/kart-attack",
+    live: "https://kart-attack-three.vercel.app/",
+    image: "/projects/kart.webp",
     theme: "pixels",
   },
 ];
