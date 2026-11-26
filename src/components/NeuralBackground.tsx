@@ -44,7 +44,7 @@ export default function NeuralBackground() {
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.round(Math.min(150, Math.max(45, (w * h) / 8000)));
+      const count = Math.round(Math.min(90, Math.max(40, (w * h) / 14000)));
       nodes = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
@@ -58,15 +58,32 @@ export default function NeuralBackground() {
 
     const wrap = (v: number, max: number) => ((v % max) + max) % max;
 
+    // The hero's sticky canvas is opaque and covers the whole viewport until the hero ends,
+    // so drawing underneath it is wasted work.
+    const hero = document.getElementById("top");
+    const isCovered = () =>
+      !!hero && window.scrollY < hero.offsetHeight - window.innerHeight - 24;
+    const FRAME_MS = 1000 / 30;
+    let lastDraw = 0;
+
     const frame = (time: number) => {
+      if (isCovered()) {
+        raf = 0;
+        return; // the scroll listener restarts the loop once the hero scrolls away
+      }
+      if (!reduced && time - lastDraw < FRAME_MS - 2) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
+      lastDraw = time;
       ctx.clearRect(0, 0, w, h);
       const scroll = window.scrollY;
 
       // Positions on screen, with depth-based scroll parallax.
       const pts = nodes.map((n) => {
         if (!reduced) {
-          n.x = wrap(n.x + n.vx * n.z, w);
-          n.y = wrap(n.y + n.vy * n.z, h);
+          n.x = wrap(n.x + n.vx * n.z * 2, w);
+          n.y = wrap(n.y + n.vy * n.z * 2, h);
         }
         const sx = n.x;
         const sy = wrap(n.y - scroll * n.z * 0.18, h);
@@ -75,11 +92,15 @@ export default function NeuralBackground() {
           const d = Math.hypot(sx - mouse.x, sy - mouse.y);
           if (d < ATTENTION) target = 1 - d / ATTENTION;
         }
-        n.glow += (target - n.glow) * 0.12;
+        n.glow += (target - n.glow) * 0.22;
         return { sx, sy, n };
       });
 
-      // Links between neighbours.
+      // Links between neighbours, drawn in a few alpha buckets (one stroke per bucket)
+      // instead of one path and one stroke per link.
+      const BUCKETS = 6;
+      const paths: Path2D[] = Array.from({ length: BUCKETS }, () => new Path2D());
+      const used = new Array<boolean>(BUCKETS).fill(false);
       for (let i = 0; i < pts.length; i++) {
         for (let j = i + 1; j < pts.length; j++) {
           const dx = pts[i].sx - pts[j].sx;
@@ -88,14 +109,18 @@ export default function NeuralBackground() {
           if (d2 > LINK * LINK) continue;
           const closeness = 1 - Math.sqrt(d2) / LINK;
           const boost = Math.max(pts[i].n.glow, pts[j].n.glow);
-          const alpha = closeness * (0.22 + boost * 0.6);
-          ctx.strokeStyle = `rgba(${BLUE},${alpha.toFixed(3)})`;
-          ctx.lineWidth = 0.6 + boost * 0.8;
-          ctx.beginPath();
-          ctx.moveTo(pts[i].sx, pts[i].sy);
-          ctx.lineTo(pts[j].sx, pts[j].sy);
-          ctx.stroke();
+          const alpha = Math.min(1, closeness * (0.22 + boost * 0.6));
+          const b = Math.min(BUCKETS - 1, Math.floor(alpha * BUCKETS));
+          paths[b].moveTo(pts[i].sx, pts[i].sy);
+          paths[b].lineTo(pts[j].sx, pts[j].sy);
+          used[b] = true;
         }
+      }
+      ctx.lineWidth = 0.8;
+      for (let b = 0; b < BUCKETS; b++) {
+        if (!used[b]) continue;
+        ctx.strokeStyle = `rgba(${BLUE},${((b + 0.5) / BUCKETS).toFixed(3)})`;
+        ctx.stroke(paths[b]);
       }
 
       // Attention lines from the cursor to nearby nodes.
@@ -144,7 +169,7 @@ export default function NeuralBackground() {
         }
         pulses = pulses.filter((p) => p.t < 1);
         for (const p of pulses) {
-          p.t += 0.018;
+          p.t += 0.036;
           const A = pts[p.a];
           const B = pts[p.b];
           if (!A || !B) continue;
@@ -161,10 +186,11 @@ export default function NeuralBackground() {
       }
 
       if (!reduced && !document.hidden) raf = requestAnimationFrame(frame);
+      else raf = 0;
     };
 
     const start = () => {
-      cancelAnimationFrame(raf);
+      if (raf) return;
       raf = requestAnimationFrame(frame);
     };
 
@@ -177,20 +203,24 @@ export default function NeuralBackground() {
       mouse.active = false;
     };
     const onVisibility = () => {
-      if (!document.hidden && !reduced) start();
+      if (!document.hidden) start();
     };
 
     resize();
     start();
-    window.addEventListener("resize", resize);
+    const onResize = () => {
+      resize();
+      start();
+    };
+    window.addEventListener("resize", onResize);
     window.addEventListener("pointermove", onMove, { passive: true });
     document.addEventListener("pointerleave", onLeave);
     document.addEventListener("visibilitychange", onVisibility);
-    if (reduced) window.addEventListener("scroll", start, { passive: true });
+    window.addEventListener("scroll", start, { passive: true });
 
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", onResize);
       window.removeEventListener("pointermove", onMove);
       document.removeEventListener("pointerleave", onLeave);
       document.removeEventListener("visibilitychange", onVisibility);
