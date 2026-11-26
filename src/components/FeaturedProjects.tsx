@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { GitBranch } from "lucide-react";
 
@@ -51,6 +51,7 @@ const projects: Project[] = [
     tech: ["Python", "PuLP", "FastAPI", "PostgreSQL", "React", "TypeScript", "Docker"],
     repo: "https://github.com/adityaayushman/GRIDSENSE",
     live: "https://gridsense-app-drab.vercel.app/",
+    image: "/projects/gridsense.webp",
     embed: true,
     metric: "4.1× more EVs per street transformer (median of 20 fleet draws)",
     theme: "energy",
@@ -125,6 +126,7 @@ const projects: Project[] = [
     tech: ["Python", "scikit-learn", "NLP", "FastAPI", "React"],
     repo: "https://github.com/adityaayushman/AI-Placement-Coach",
     live: "https://ai-placement-coach-murex.vercel.app/",
+    image: "/projects/placement-coach.webp",
     embed: true,
     theme: "cloud",
   },
@@ -280,31 +282,44 @@ function ProjectVisual({ theme }: { theme: ProjectTheme }) {
   );
 }
 
+// Only one live iframe may run at a time. Four full dashboards animating at once is what made
+// scrolling stutter, so each card shows a still poster and starts its live site on a deliberate hover.
+let activePreview: { token: object; stop: () => void } | null = null;
+
 function LivePreview({ url, title, poster }: { url: string; title: string; poster?: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [load, setLoad] = useState(false);
+  const [live, setLive] = useState(false);
+  const [ready, setReady] = useState(false);
   const [scale, setScale] = useState(0.4);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const ro = new ResizeObserver(([e]) => setScale(e.contentRect.width / 1280));
     ro.observe(el);
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
-          setLoad(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "300px" }
-    );
-    io.observe(el);
-    return () => {
-      ro.disconnect();
-      io.disconnect();
-    };
+    return () => ro.disconnect();
   }, []);
+
+  const [token] = useState(() => ({}));
+
+  const stop = useCallback(() => {
+    if (timer.current) clearTimeout(timer.current);
+    setLive(false);
+    setReady(false);
+    if (activePreview?.token === token) activePreview = null;
+  }, [token]);
+
+  const start = useCallback(() => {
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
+      if (activePreview && activePreview.token !== token) activePreview.stop();
+      activePreview = { token, stop };
+      setLive(true);
+    }, 350);
+  }, [token, stop]);
+
+  useEffect(() => stop, [stop]);
 
   const host = url.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
@@ -318,16 +333,23 @@ function LivePreview({ url, title, poster }: { url: string; title: string; poste
           {host}
         </span>
       </div>
-      <div ref={ref} className="relative aspect-[16/10] overflow-hidden">
+      <div
+        ref={ref}
+        className="relative aspect-[16/10] overflow-hidden"
+        onMouseEnter={start}
+        onMouseLeave={stop}
+        onFocus={start}
+        onBlur={stop}
+      >
         {poster && (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={poster} alt="" className="absolute inset-0 h-full w-full object-contain bg-[#0a0a0a]" />
         )}
-        {load && (
+        {live && (
           <iframe
+            onLoad={() => setReady(true)}
             src={url}
             title={`${title} live preview`}
-            loading="lazy"
             tabIndex={-1}
             referrerPolicy="no-referrer"
             sandbox="allow-scripts allow-same-origin"
@@ -338,6 +360,8 @@ function LivePreview({ url, title, poster }: { url: string; title: string; poste
               transformOrigin: "top left",
               border: 0,
               pointerEvents: "none",
+              opacity: ready ? 1 : 0,
+              transition: "opacity 300ms ease",
             }}
           />
         )}
