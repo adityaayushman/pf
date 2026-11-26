@@ -61,8 +61,6 @@ const projects: Project[] = [
       "AI-powered medical-imaging platform for intelligent clinical decision support — computer vision and deep learning with Explainable AI, delivered through a FastAPI backend and a React dashboard.",
     tech: ["Python", "PyTorch", "OpenCV", "FastAPI", "React.js"],
     repo: "https://github.com/adityaayushman/medvision",
-    live: "https://medchron-ai.vercel.app/",
-    embed: true,
     metric: "Brain MRI: 85.7% accuracy · ROC-AUC 0.969",
     theme: "scan",
     featured: true,
