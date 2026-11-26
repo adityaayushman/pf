@@ -136,7 +136,7 @@ export default function Experience() {
               {exp.tech.map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-xs text-[#d2d2d7] font-medium tracking-wide"
+                  className="px-3 py-1 bg-[#1b1b1d] border border-white/10 rounded-full text-xs text-[#d2d2d7] font-medium tracking-wide"
                 >
                   {t}
                 </span>

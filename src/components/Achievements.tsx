@@ -19,7 +19,7 @@ const items = [
 export default function Achievements() {
   return (
     <section className="py-28 md:py-44 px-6 md:px-12 max-w-7xl mx-auto">
-      <div className="bg-white/3 backdrop-blur-2xl rounded-3xl p-8 md:p-16 border border-white/10 relative overflow-hidden">
+      <div className="bg-[#0e0e10] rounded-3xl p-8 md:p-16 border border-white/10 relative overflow-hidden">
         {/* Background Accent */}
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-[#0071e3]/10 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 bg-[#0071e3]/5 rounded-full blur-3xl pointer-events-none"></div>

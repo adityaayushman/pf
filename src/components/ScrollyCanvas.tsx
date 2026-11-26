@@ -3,10 +3,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 
-const FRAME_COUNT = 150;
-const CONCURRENCY = 8;
+// The sequence has 150 files. Every second one is plenty for a scroll-scrubbed hero, and halves
+// the decoded pixels held in memory (150 frames at 1280x720 is about 550 MB).
+const FILE_COUNT = 150;
+const STEP = 2;
+const FRAME_COUNT = FILE_COUNT / STEP;
+const CONCURRENCY = 6;
 const getFramePath = (index: number) => {
-  const paddedIndex = index.toString().padStart(3, "0");
+  const paddedIndex = (index * STEP).toString().padStart(3, "0");
   return `/sequence/frame_${paddedIndex}_delay-0.066s.webp`;
 };
 
@@ -143,11 +147,24 @@ export default function ScrollyCanvas({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadedCount]);
 
+  // Coalesce scroll events: at most one draw per animation frame, and none when the frame
+  // index has not changed.
+  const pendingFrame = useRef(-1);
+  const drawnFrame = useRef(-1);
+  const rafId = useRef(0);
+
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if (images.length === 0) return;
     let frameIndex = Math.floor(latest * FRAME_COUNT);
     if (frameIndex >= FRAME_COUNT) frameIndex = FRAME_COUNT - 1;
-    requestAnimationFrame(() => drawImage(frameIndex));
+    if (frameIndex === drawnFrame.current && !rafId.current) return;
+    pendingFrame.current = frameIndex;
+    if (rafId.current) return;
+    rafId.current = requestAnimationFrame(() => {
+      rafId.current = 0;
+      drawnFrame.current = pendingFrame.current;
+      drawImage(pendingFrame.current);
+    });
   });
 
   return (
